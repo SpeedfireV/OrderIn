@@ -19,7 +19,6 @@ class AppBottomBarItem extends ConsumerWidget {
         borderRadius: BorderRadius.circular(90),
         onTap: () {
           ref.read(bottomAppBarPositionProvider.notifier).changePosition(label);
-          debugPrint(ref.read(bottomAppBarPositionProvider.notifier).state);
         },
         child: Ink(
           height: 50,
@@ -28,7 +27,7 @@ class AppBottomBarItem extends ConsumerWidget {
               borderRadius: BorderRadius.circular(90),
               color:
                   ref.read(bottomAppBarPositionProvider.notifier).state == label
-                      ? AppColors.lightColor
+                      ? AppColors.secondaryColor
                       : Colors.transparent),
           child: Icon(icon,
               size: 28,

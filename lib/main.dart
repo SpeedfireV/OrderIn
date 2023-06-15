@@ -14,10 +14,12 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             useMaterial3: true,
             colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.amber, background: AppColors.secondaryColor)),
+                seedColor: AppColors.secondaryColorReversed,
+                background: AppColors.secondaryColorReversed)),
         routerConfig: router,
       ),
     );
