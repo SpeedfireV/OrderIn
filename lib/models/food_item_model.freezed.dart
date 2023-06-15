@@ -23,7 +23,11 @@ mixin _$FoodItem {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  List<String> get images => throw _privateConstructorUsedError;
+  String get mainImage => throw _privateConstructorUsedError;
+  int get rating => throw _privateConstructorUsedError;
+  int get numberOfRating => throw _privateConstructorUsedError;
+  bool get favourite => throw _privateConstructorUsedError;
+  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +40,15 @@ abstract class $FoodItemCopyWith<$Res> {
   factory $FoodItemCopyWith(FoodItem value, $Res Function(FoodItem) then) =
       _$FoodItemCopyWithImpl<$Res, FoodItem>;
   @useResult
-  $Res call({String name, String description, int price, List<String> images});
+  $Res call(
+      {String name,
+      String description,
+      int price,
+      String mainImage,
+      int rating,
+      int numberOfRating,
+      bool favourite,
+      List<Ingredient> ingredients});
 }
 
 /// @nodoc
@@ -55,7 +67,11 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
     Object? name = null,
     Object? description = null,
     Object? price = null,
-    Object? images = null,
+    Object? mainImage = null,
+    Object? rating = null,
+    Object? numberOfRating = null,
+    Object? favourite = null,
+    Object? ingredients = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -70,10 +86,26 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      images: null == images
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      mainImage: null == mainImage
+          ? _value.mainImage
+          : mainImage // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int,
+      numberOfRating: null == numberOfRating
+          ? _value.numberOfRating
+          : numberOfRating // ignore: cast_nullable_to_non_nullable
+              as int,
+      favourite: null == favourite
+          ? _value.favourite
+          : favourite // ignore: cast_nullable_to_non_nullable
+              as bool,
+      ingredients: null == ingredients
+          ? _value.ingredients
+          : ingredients // ignore: cast_nullable_to_non_nullable
+              as List<Ingredient>,
     ) as $Val);
   }
 }
@@ -85,7 +117,15 @@ abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
       __$$_FoodItemCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String description, int price, List<String> images});
+  $Res call(
+      {String name,
+      String description,
+      int price,
+      String mainImage,
+      int rating,
+      int numberOfRating,
+      bool favourite,
+      List<Ingredient> ingredients});
 }
 
 /// @nodoc
@@ -102,7 +142,11 @@ class __$$_FoodItemCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? price = null,
-    Object? images = null,
+    Object? mainImage = null,
+    Object? rating = null,
+    Object? numberOfRating = null,
+    Object? favourite = null,
+    Object? ingredients = null,
   }) {
     return _then(_$_FoodItem(
       name: null == name
@@ -117,10 +161,26 @@ class __$$_FoodItemCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      images: null == images
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      mainImage: null == mainImage
+          ? _value.mainImage
+          : mainImage // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int,
+      numberOfRating: null == numberOfRating
+          ? _value.numberOfRating
+          : numberOfRating // ignore: cast_nullable_to_non_nullable
+              as int,
+      favourite: null == favourite
+          ? _value.favourite
+          : favourite // ignore: cast_nullable_to_non_nullable
+              as bool,
+      ingredients: null == ingredients
+          ? _value._ingredients
+          : ingredients // ignore: cast_nullable_to_non_nullable
+              as List<Ingredient>,
     ));
   }
 }
@@ -132,8 +192,12 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       {required this.name,
       required this.description,
       required this.price,
-      required final List<String> images})
-      : _images = images;
+      required this.mainImage,
+      required this.rating,
+      required this.numberOfRating,
+      required this.favourite,
+      required final List<Ingredient> ingredients})
+      : _ingredients = ingredients;
 
   factory _$_FoodItem.fromJson(Map<String, dynamic> json) =>
       _$$_FoodItemFromJson(json);
@@ -144,17 +208,25 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   final String description;
   @override
   final int price;
-  final List<String> _images;
   @override
-  List<String> get images {
-    if (_images is EqualUnmodifiableListView) return _images;
+  final String mainImage;
+  @override
+  final int rating;
+  @override
+  final int numberOfRating;
+  @override
+  final bool favourite;
+  final List<Ingredient> _ingredients;
+  @override
+  List<Ingredient> get ingredients {
+    if (_ingredients is EqualUnmodifiableListView) return _ingredients;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(_ingredients);
   }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FoodItem(name: $name, description: $description, price: $price, images: $images)';
+    return 'FoodItem(name: $name, description: $description, price: $price, mainImage: $mainImage, rating: $rating, numberOfRating: $numberOfRating, favourite: $favourite, ingredients: $ingredients)';
   }
 
   @override
@@ -165,7 +237,11 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('images', images));
+      ..add(DiagnosticsProperty('mainImage', mainImage))
+      ..add(DiagnosticsProperty('rating', rating))
+      ..add(DiagnosticsProperty('numberOfRating', numberOfRating))
+      ..add(DiagnosticsProperty('favourite', favourite))
+      ..add(DiagnosticsProperty('ingredients', ingredients));
   }
 
   @override
@@ -177,13 +253,29 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
-            const DeepCollectionEquality().equals(other._images, _images));
+            (identical(other.mainImage, mainImage) ||
+                other.mainImage == mainImage) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.numberOfRating, numberOfRating) ||
+                other.numberOfRating == numberOfRating) &&
+            (identical(other.favourite, favourite) ||
+                other.favourite == favourite) &&
+            const DeepCollectionEquality()
+                .equals(other._ingredients, _ingredients));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, price,
-      const DeepCollectionEquality().hash(_images));
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      description,
+      price,
+      mainImage,
+      rating,
+      numberOfRating,
+      favourite,
+      const DeepCollectionEquality().hash(_ingredients));
 
   @JsonKey(ignore: true)
   @override
@@ -204,7 +296,11 @@ abstract class _FoodItem implements FoodItem {
       {required final String name,
       required final String description,
       required final int price,
-      required final List<String> images}) = _$_FoodItem;
+      required final String mainImage,
+      required final int rating,
+      required final int numberOfRating,
+      required final bool favourite,
+      required final List<Ingredient> ingredients}) = _$_FoodItem;
 
   factory _FoodItem.fromJson(Map<String, dynamic> json) = _$_FoodItem.fromJson;
 
@@ -215,7 +311,15 @@ abstract class _FoodItem implements FoodItem {
   @override
   int get price;
   @override
-  List<String> get images;
+  String get mainImage;
+  @override
+  int get rating;
+  @override
+  int get numberOfRating;
+  @override
+  bool get favourite;
+  @override
+  List<Ingredient> get ingredients;
   @override
   @JsonKey(ignore: true)
   _$$_FoodItemCopyWith<_$_FoodItem> get copyWith =>

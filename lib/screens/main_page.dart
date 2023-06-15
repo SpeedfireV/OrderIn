@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/widgets/carousel_item.dart';
 import 'package:meatingless/widgets/element_title.dart';
@@ -54,10 +55,35 @@ class _MainPageState extends ConsumerState<MainPage> {
           ),
           SizedBox(height: 8),
           CarouselSlider(
-            items: [CarouselItem(), CarouselItem()],
+            items: [
+              CarouselItem(
+                item: FoodItem(
+                    name: "Vege Beef Burger",
+                    description: "Very tasty burger.",
+                    price: 899,
+                    mainImage: "lib/assets/images/vege-beef-burger.jpg",
+                    rating: 50,
+                    numberOfRating: 3800,
+                    favourite: false,
+                    ingredients: []),
+              ),
+              CarouselItem(
+                item: FoodItem(
+                    name: "NY Style Earthy Pizza",
+                    description: "The impressive one.",
+                    price: 1699,
+                    mainImage: "lib/assets/images/vege-beef-burger.jpg",
+                    rating: 50,
+                    numberOfRating: 3800,
+                    favourite: false,
+                    ingredients: []),
+              )
+            ],
             options: CarouselOptions(
+              autoPlayAnimationDuration: Duration(milliseconds: 1200),
+              autoPlayInterval: Duration(milliseconds: 4500),
+              enlargeCenterPage: true,
               height: 260,
-              enlargeFactor: 0.1,
               autoPlay: true,
             ),
           ),
@@ -67,7 +93,7 @@ class _MainPageState extends ConsumerState<MainPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElementTitle(title: "Delicious Items"),
+                ElementTitle(title: "Delicious Sets"),
                 TextButton(
                     onPressed: () {},
                     child: Text(
@@ -77,7 +103,8 @@ class _MainPageState extends ConsumerState<MainPage> {
               ],
             ),
           ),
-          SizedBox(height: 80)
+          SizedBox(height: 8),
+          SizedBox(height: 100)
         ],
       ),
       const Align(

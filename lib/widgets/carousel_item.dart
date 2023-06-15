@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meatingless/models/food_item_model.dart';
 
+import '../services/functions/price.dart';
 import '../variables/colors.dart';
 
 class CarouselItem extends ConsumerStatefulWidget {
-  const CarouselItem({super.key});
+  const CarouselItem({super.key, required this.item});
+  final FoodItem item;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _CarouselItemState();
@@ -13,104 +16,118 @@ class CarouselItem extends ConsumerStatefulWidget {
 class _CarouselItemState extends ConsumerState<CarouselItem> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {},
-        child: Ink(
-          decoration: BoxDecoration(
+    FoodItem item = widget.item;
+
+    return Stack(children: [
+      ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Hero(
+          tag: item.name,
+          child: InkWell(
             borderRadius: BorderRadius.circular(30),
-          ),
-          child: Stack(children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: const Image(
-                height: 260,
-                image: AssetImage("lib/assets/images/vege-beef-burger.jpg"),
+            onTap: () {},
+            child: Ink(
+              child: Image(
+                height: double.infinity,
+                image: AssetImage(item.mainImage),
               ),
             ),
-            Container(
-              height: double.infinity,
-              width: 220,
-              decoration: BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.horizontal(left: Radius.circular(30)),
-                  gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        AppColors.mainColor.withOpacity(0.5),
-                        AppColors.mainColor.withOpacity(0)
-                      ])),
+          ),
+        ),
+      ),
+      IgnorePointer(
+        child: Container(
+          height: double.infinity,
+          width: 200,
+          decoration: BoxDecoration(
+              borderRadius:
+                  const BorderRadius.horizontal(left: Radius.circular(30)),
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    AppColors.mainColor.withOpacity(0.5),
+                    AppColors.mainColor.withOpacity(0)
+                  ])),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IgnorePointer(
+              child: SizedBox(
+                width: 140,
+                child: Text(
+                  item.name,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 21,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Expanded(child: Container()),
+            IgnorePointer(
+              child: Text(
+                "\$${price(item.price)}",
+                style: TextStyle(
+                    color: AppColors.lightColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 23),
+              ),
+            ),
+            IgnorePointer(
+              child: Row(
                 children: [
-                  const SizedBox(
-                    width: 140,
-                    child: Text(
-                      "Vege Beef Burger",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 21,
-                          fontWeight: FontWeight.w600),
-                    ),
+                  const Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  Expanded(child: Container()),
+                  const SizedBox(width: 4),
                   Text(
-                    "\$8.99",
+                    "5.0 (3.8k)",
                     style: TextStyle(
                         color: AppColors.lightColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 23),
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        "5.0 (3.8k)",
-                        style: TextStyle(
-                            color: AppColors.lightColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                            style: const ButtonStyle(),
-                            onPressed: () {},
-                            child: const Text(
-                              "Add to Cart",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 15),
-                            )),
-                      ),
-                      const SizedBox(width: 32),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.favorite_outline_rounded,
-                          color: AppColors.lightColor,
-                        ),
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                AppColors.secondaryColor.withOpacity(0.6))),
-                      ),
-                      const SizedBox(width: 8)
-                    ],
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
                   ),
                 ],
               ),
-            )
-          ]),
-        ));
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                      style: const ButtonStyle(),
+                      onPressed: () {},
+                      child: const Text(
+                        "Add to Cart",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 15),
+                      )),
+                ),
+                const SizedBox(width: 32),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    item.favourite
+                        ? Icons.favorite_rounded
+                        : Icons.favorite_outline_rounded,
+                    color: AppColors.lightColor,
+                  ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                          AppColors.secondaryColor.withOpacity(0.6))),
+                ),
+                const SizedBox(width: 8)
+              ],
+            ),
+          ],
+        ),
+      )
+    ]);
   }
 }
