@@ -6,14 +6,14 @@ import '../screens/order_page.dart';
 import '../screens/profile_page.dart';
 
 final router = GoRouter(routes: [
-  GoRoute(path: "/", builder: (context, state) => MainPage()),
-  GoRoute(path: "/history", builder: (context, state) => HistoryPage()),
+  GoRoute(path: "/", builder: (context, state) => const MainPage()),
+  GoRoute(path: "/history", builder: (context, state) => const HistoryPage()),
   GoRoute(
     path: "/order",
-    builder: (context, state) => OrderPage(),
+    builder: (context, state) => const OrderPage(),
   ),
   GoRoute(
     path: "/profile",
-    builder: (context, state) => ProfilePage(),
+    builder: (context, state) => const ProfilePage(),
   )
 ]);

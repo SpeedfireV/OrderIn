@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/variables/colors.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MainApp()));
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -17,9 +18,10 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             useMaterial3: true,
+            textTheme: GoogleFonts.aleoTextTheme(),
             colorScheme: ColorScheme.fromSeed(
-                seedColor: AppColors.secondaryColorReversed,
-                background: AppColors.secondaryColorReversed)),
+                seedColor: AppColors.secondaryColor,
+                background: AppColors.backgroundColor)),
         routerConfig: router,
       ),
     );

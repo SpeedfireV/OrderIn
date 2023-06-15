@@ -1,9 +1,22 @@
-final String _directory = "lib/assets/images/";
+import 'package:meatingless/variables/sorting_options.dart';
 
-class SortingIcons {
-  static String burger = _directory + "burger.png";
-  static String pizza = _directory + "pizza.png";
-  static String salad = _directory + "salad.png";
-  static String drinks = _directory + "cocktail.png";
-  static String noodles = _directory + "ramen.png";
+const String _directory = "lib/assets/icons/";
+
+class SortingVariables {
+  static Map<SortingOptions, String> mapOfDirectories = {
+    SortingOptions.all: "${_directory}all.png",
+    SortingOptions.burgers: "${_directory}burger.png",
+    SortingOptions.pizza: "${_directory}pizza.png",
+    SortingOptions.noodles: "${_directory}ramen.png",
+    SortingOptions.salads: "${_directory}salad.png",
+    SortingOptions.drinks: "${_directory}cocktail.png",
+  };
+  static Map<SortingOptions, String> mapOfTitles = {
+    SortingOptions.all: "All",
+    SortingOptions.burgers: "Burgers",
+    SortingOptions.pizza: "Pizzas",
+    SortingOptions.noodles: "Noodles",
+    SortingOptions.salads: "Salads",
+    SortingOptions.drinks: "Drinks",
+  };
 }

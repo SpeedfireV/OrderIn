@@ -13,7 +13,7 @@ class AppBottomBarItem extends ConsumerWidget {
     ref.watch(bottomAppBarPositionProvider);
     return Material(
       color: Colors.transparent,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(90))),
       child: InkWell(
         borderRadius: BorderRadius.circular(90),
@@ -33,8 +33,8 @@ class AppBottomBarItem extends ConsumerWidget {
               size: 28,
               color:
                   ref.read(bottomAppBarPositionProvider.notifier).state == label
-                      ? AppColors.mainColor
-                      : AppColors.lightColor),
+                      ? AppColors.lightColor
+                      : AppColors.secondaryColorLight),
         ),
       ),
     );
