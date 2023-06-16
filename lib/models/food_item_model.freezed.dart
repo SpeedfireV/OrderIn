@@ -28,7 +28,7 @@ mixin _$FoodItem {
   int get rating => throw _privateConstructorUsedError;
   int get numberOfRating => throw _privateConstructorUsedError;
   bool get favourite => throw _privateConstructorUsedError;
-  List<Ingredients> get ingredients => throw _privateConstructorUsedError;
+  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +50,7 @@ abstract class $FoodItemCopyWith<$Res> {
       int rating,
       int numberOfRating,
       bool favourite,
-      List<Ingredients> ingredients});
+      List<Ingredient> ingredients});
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as List<Ingredients>,
+              as List<Ingredient>,
     ) as $Val);
   }
 }
@@ -133,7 +133,7 @@ abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
       int rating,
       int numberOfRating,
       bool favourite,
-      List<Ingredients> ingredients});
+      List<Ingredient> ingredients});
 }
 
 /// @nodoc
@@ -193,7 +193,7 @@ class __$$_FoodItemCopyWithImpl<$Res>
       ingredients: null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as List<Ingredients>,
+              as List<Ingredient>,
     ));
   }
 }
@@ -210,7 +210,7 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       required this.rating,
       required this.numberOfRating,
       required this.favourite,
-      required final List<Ingredients> ingredients})
+      required final List<Ingredient> ingredients})
       : _ingredients = ingredients;
 
   factory _$_FoodItem.fromJson(Map<String, dynamic> json) =>
@@ -232,9 +232,9 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   final int numberOfRating;
   @override
   final bool favourite;
-  final List<Ingredients> _ingredients;
+  final List<Ingredient> _ingredients;
   @override
-  List<Ingredients> get ingredients {
+  List<Ingredient> get ingredients {
     if (_ingredients is EqualUnmodifiableListView) return _ingredients;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_ingredients);
@@ -321,7 +321,7 @@ abstract class _FoodItem implements FoodItem {
       required final int rating,
       required final int numberOfRating,
       required final bool favourite,
-      required final List<Ingredients> ingredients}) = _$_FoodItem;
+      required final List<Ingredient> ingredients}) = _$_FoodItem;
 
   factory _FoodItem.fromJson(Map<String, dynamic> json) = _$_FoodItem.fromJson;
 
@@ -342,7 +342,7 @@ abstract class _FoodItem implements FoodItem {
   @override
   bool get favourite;
   @override
-  List<Ingredients> get ingredients;
+  List<Ingredient> get ingredients;
   @override
   @JsonKey(ignore: true)
   _$$_FoodItemCopyWith<_$_FoodItem> get copyWith =>

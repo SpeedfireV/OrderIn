@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/functions/rating.dart';
+import 'package:meatingless/services/ingredients.dart';
 import 'package:numeral/numeral.dart';
 
 import '../../services/functions/price.dart';
@@ -27,6 +28,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
         child: InkWell(
           borderRadius: BorderRadius.circular(30),
           onTap: () {
+            currentIngredients = item.ingredients;
             router.pushNamed("item", extra: item);
           },
           child: Ink(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/ingredients.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
@@ -9,6 +10,7 @@ import 'package:meatingless/widgets/item_page/ingredient_selector.dart';
 import 'package:meatingless/widgets/outlined_icon_button.dart';
 import 'package:numeral/numeral.dart';
 
+import '../services/functions/price.dart';
 import '../services/functions/rating.dart';
 
 class ItemPage extends ConsumerStatefulWidget {
@@ -23,6 +25,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
   @override
   Widget build(BuildContext context) {
     FoodItem item = widget.item;
+    ref.watch(ingredientsPriceProvider);
+    ref.watch(ingredientsListProvider);
     return Scaffold(
       body: Stack(
         children: [
@@ -137,8 +141,11 @@ class _ItemPageState extends ConsumerState<ItemPage> {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) =>
-                    IngredientSelector(ingredient: item.ingredients[index]),
+                itemBuilder: (context, index) => IngredientSelector(
+                  ingredient:
+                      ref.read(ingredientsListProvider.notifier).state[index],
+                  index: index,
+                ),
                 itemCount: item.ingredients.length,
               ),
               const SizedBox(height: 80)
@@ -183,6 +190,29 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                     function: () {
                       router.pop();
                     }),
+                Material(
+                  elevation: 1.5,
+                  borderRadius: BorderRadius.circular(30),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(30),
+                    onTap: () {
+                      // TODO: info dialog appears
+                    },
+                    child: Ink(
+                        height: 50,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
+                        decoration: BoxDecoration(
+                            color: AppColors.lightColor,
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Center(
+                            child: Text(
+                          "\$${price(item.price + ref.read(ingredientsPriceProvider.notifier).state)}${ref.read(ingredientsPriceProvider.notifier).state != 0 ? " (Extra: \$${price(ref.read(ingredientsPriceProvider.notifier).state)})" : ""}",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 15),
+                        ))),
+                  ),
+                ),
                 ElevatedIconButton(
                     icon: Icons.favorite_outline_rounded, function: () {})
               ],

@@ -20,9 +20,8 @@ Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Ingredient {
-  String get name => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  String get volume => throw _privateConstructorUsedError;
+  Ingredients get ingredientEnum => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $IngredientCopyWith<$Res> {
           Ingredient value, $Res Function(Ingredient) then) =
       _$IngredientCopyWithImpl<$Res, Ingredient>;
   @useResult
-  $Res call({String name, int price, String volume});
+  $Res call({Ingredients ingredientEnum, bool active});
 }
 
 /// @nodoc
@@ -52,23 +51,18 @@ class _$IngredientCopyWithImpl<$Res, $Val extends Ingredient>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? price = null,
-    Object? volume = null,
+    Object? ingredientEnum = null,
+    Object? active = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
+      ingredientEnum: null == ingredientEnum
+          ? _value.ingredientEnum
+          : ingredientEnum // ignore: cast_nullable_to_non_nullable
+              as Ingredients,
+      active: null == active
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -81,7 +75,7 @@ abstract class _$$_IngredientCopyWith<$Res>
       __$$_IngredientCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int price, String volume});
+  $Res call({Ingredients ingredientEnum, bool active});
 }
 
 /// @nodoc
@@ -95,23 +89,18 @@ class __$$_IngredientCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? price = null,
-    Object? volume = null,
+    Object? ingredientEnum = null,
+    Object? active = null,
   }) {
     return _then(_$_Ingredient(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
+      ingredientEnum: null == ingredientEnum
+          ? _value.ingredientEnum
+          : ingredientEnum // ignore: cast_nullable_to_non_nullable
+              as Ingredients,
+      active: null == active
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -119,22 +108,19 @@ class __$$_IngredientCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
-  const _$_Ingredient(
-      {required this.name, required this.price, required this.volume});
+  const _$_Ingredient({required this.ingredientEnum, required this.active});
 
   factory _$_Ingredient.fromJson(Map<String, dynamic> json) =>
       _$$_IngredientFromJson(json);
 
   @override
-  final String name;
+  final Ingredients ingredientEnum;
   @override
-  final int price;
-  @override
-  final String volume;
+  final bool active;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Ingredient(name: $name, price: $price, volume: $volume)';
+    return 'Ingredient(ingredientEnum: $ingredientEnum, active: $active)';
   }
 
   @override
@@ -142,9 +128,8 @@ class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Ingredient'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('volume', volume));
+      ..add(DiagnosticsProperty('ingredientEnum', ingredientEnum))
+      ..add(DiagnosticsProperty('active', active));
   }
 
   @override
@@ -152,14 +137,14 @@ class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Ingredient &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.volume, volume) || other.volume == volume));
+            (identical(other.ingredientEnum, ingredientEnum) ||
+                other.ingredientEnum == ingredientEnum) &&
+            (identical(other.active, active) || other.active == active));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, price, volume);
+  int get hashCode => Object.hash(runtimeType, ingredientEnum, active);
 
   @JsonKey(ignore: true)
   @override
@@ -177,19 +162,16 @@ class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
 
 abstract class _Ingredient implements Ingredient {
   const factory _Ingredient(
-      {required final String name,
-      required final int price,
-      required final String volume}) = _$_Ingredient;
+      {required final Ingredients ingredientEnum,
+      required final bool active}) = _$_Ingredient;
 
   factory _Ingredient.fromJson(Map<String, dynamic> json) =
       _$_Ingredient.fromJson;
 
   @override
-  String get name;
+  Ingredients get ingredientEnum;
   @override
-  int get price;
-  @override
-  String get volume;
+  bool get active;
   @override
   @JsonKey(ignore: true)
   _$$_IngredientCopyWith<_$_Ingredient> get copyWith =>

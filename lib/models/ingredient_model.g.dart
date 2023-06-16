@@ -8,14 +8,16 @@ part of 'ingredient_model.dart';
 
 _$_Ingredient _$$_IngredientFromJson(Map<String, dynamic> json) =>
     _$_Ingredient(
-      name: json['name'] as String,
-      price: json['price'] as int,
-      volume: json['volume'] as String,
+      ingredientEnum: $enumDecode(_$IngredientsEnumMap, json['ingredientEnum']),
+      active: json['active'] as bool,
     );
 
 Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'price': instance.price,
-      'volume': instance.volume,
+      'ingredientEnum': _$IngredientsEnumMap[instance.ingredientEnum]!,
+      'active': instance.active,
     };
+
+const _$IngredientsEnumMap = {
+  Ingredients.mushroom: 'mushroom',
+};

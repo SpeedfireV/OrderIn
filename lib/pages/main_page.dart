@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
+import 'package:meatingless/models/ingredient_model.dart';
+import 'package:meatingless/services/functions/define_ingredient.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/images.dart';
 import 'package:meatingless/variables/ingredients_variables.dart';
@@ -122,7 +124,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                       rating: 47,
                       numberOfRating: 570,
                       favourite: false,
-                      ingredients: [Ingredients.mushroom])),
+                      ingredients: [defineIngredient(Ingredients.mushroom)])),
             ),
           ),
           const SizedBox(height: 100)
