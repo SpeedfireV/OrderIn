@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../services/functions/price.dart';
-import '../../variables/colors.dart';
 import '../../variables/ingredients_variables.dart';
 
 class IngredientSelector extends ConsumerStatefulWidget {
@@ -19,7 +18,7 @@ class _IngredientSelectorState extends ConsumerState<IngredientSelector> {
   Widget build(BuildContext context) {
     Ingredients ingredient = widget.ingredient;
     return CheckboxListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 24),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24),
       value: true,
       onChanged: (newState) {},
       title: Text(IngredientsVariables.mapOfIngredientsName[ingredient]!),

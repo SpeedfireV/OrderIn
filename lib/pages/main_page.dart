@@ -51,11 +51,11 @@ class _MainPageState extends ConsumerState<MainPage> {
           const SizedBox(height: 24),
           const SizedBox(height: 100, child: FilterOptionsWidget()),
           const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: ElementTitle(title: "Popular Items"),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           CarouselSlider(
             items: [
               CarouselItem(
@@ -84,30 +84,30 @@ class _MainPageState extends ConsumerState<MainPage> {
               )
             ],
             options: CarouselOptions(
-              autoPlayAnimationDuration: Duration(milliseconds: 1200),
-              autoPlayInterval: Duration(milliseconds: 4500),
+              autoPlayAnimationDuration: const Duration(milliseconds: 1200),
+              autoPlayInterval: const Duration(milliseconds: 4500),
               enlargeCenterPage: true,
               height: 260,
               autoPlay: true,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElementTitle(title: "Specials Of The Day"),
+                const ElementTitle(title: "Specials Of The Day"),
                 TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "See All",
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ))
               ],
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: SizedBox(
@@ -125,7 +125,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                       ingredients: [Ingredients.mushroom])),
             ),
           ),
-          SizedBox(height: 100)
+          const SizedBox(height: 100)
         ],
       ),
       const Align(

@@ -65,7 +65,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                 width: 140,
                 child: Text(
                   item.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 21,
                       fontWeight: FontWeight.w600),

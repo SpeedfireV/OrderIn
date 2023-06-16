@@ -9,7 +9,7 @@ class SortingOptionsNotifier extends StateNotifier<SortingOptions> {
   }
 }
 
-final SortingOptionsProvider =
+final sortingOptionsProvider =
     StateNotifierProvider<SortingOptionsNotifier, SortingOptions>((ref) {
   return SortingOptionsNotifier();
 });

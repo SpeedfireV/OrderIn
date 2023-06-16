@@ -17,11 +17,11 @@ class FilterIcon extends ConsumerStatefulWidget {
 class _FilterIconState extends ConsumerState<FilterIcon> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(SortingOptionsProvider);
+    ref.watch(sortingOptionsProvider);
     return GestureDetector(
       onTap: () {
         debugPrint("Changed sorting category");
-        ref.read(SortingOptionsProvider.notifier).changeOption(widget.option);
+        ref.read(sortingOptionsProvider.notifier).changeOption(widget.option);
       },
       child: Column(children: [
         Material(

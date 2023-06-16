@@ -3,16 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/variables/colors.dart';
-import 'package:meatingless/variables/images.dart';
-import 'package:meatingless/variables/ingredients_variables.dart';
-import 'package:meatingless/variables/sorting_options.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/item_page/ingredient_selector.dart';
 import 'package:meatingless/widgets/outlined_icon_button.dart';
 import 'package:numeral/numeral.dart';
 
-import '../services/functions/price.dart';
 import '../services/functions/rating.dart';
 
 class ItemPage extends ConsumerStatefulWidget {
@@ -32,14 +28,15 @@ class _ItemPageState extends ConsumerState<ItemPage> {
         children: [
           ListView(
             children: [
-              SizedBox(height: 90),
+              const SizedBox(height: 90),
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Text(
                     item.name,
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700, fontSize: 24),
                   )),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Row(
@@ -55,10 +52,10 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                           width: 24,
                           height: 24,
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(
                           SortingVariables.mapOfTitles[item.category]!,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 15),
                         ),
                       ],
@@ -66,14 +63,14 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star_rounded,
                           color: Colors.amber,
                         ),
-                        SizedBox(width: 4),
+                        const SizedBox(width: 4),
                         Text(
-                          "${rating(item.rating)}",
-                          style: TextStyle(
+                          rating(item.rating),
+                          style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
                         Text(
@@ -88,9 +85,9 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: ColorFiltered(
@@ -105,9 +102,9 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              const SizedBox(height: 16),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -126,25 +123,25 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(item.description),
               ),
-              SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              const SizedBox(height: 24),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
                 child: ElementTitle(title: "Add Extra Ingredients"),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               ListView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) =>
                     IngredientSelector(ingredient: item.ingredients[index]),
                 itemCount: item.ingredients.length,
               ),
-              SizedBox(height: 80)
+              const SizedBox(height: 80)
             ],
           ),
           Align(
@@ -158,7 +155,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   Expanded(
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          minimumSize: MaterialStatePropertyAll(Size(0, 56)),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(0, 56)),
                           backgroundColor:
                               MaterialStatePropertyAll(AppColors.mainColor)),
                       child: Text(

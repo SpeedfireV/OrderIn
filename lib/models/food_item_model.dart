@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:meatingless/variables/ingredients_variables.dart';
 import 'package:meatingless/variables/sorting_options.dart';
 
-import 'ingredient_model.dart';
-
 part 'food_item_model.freezed.dart';
 part 'food_item_model.g.dart';
 

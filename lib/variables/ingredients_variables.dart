@@ -1,12 +1,10 @@
-import 'package:meatingless/models/ingredient_model.dart';
-
 enum Ingredients { mushroom }
 
 const String _directory = "lib/assets/icons/";
 
 class IngredientsVariables {
   static Map<Ingredients, String> mapOfIngredientsDirectories = {
-    Ingredients.mushroom: _directory + "mushroom.png"
+    Ingredients.mushroom: "${_directory}mushroom.png"
   };
   static Map<Ingredients, String> mapOfIngredientsName = {
     Ingredients.mushroom: "Mushroom"

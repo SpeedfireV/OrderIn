@@ -16,7 +16,7 @@ class FilterOptionsWidget extends ConsumerStatefulWidget {
 class _SortingOptionsWidgetState extends ConsumerState<FilterOptionsWidget> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(SortingOptionsProvider);
+    ref.watch(sortingOptionsProvider);
     return ListView(
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
@@ -27,7 +27,7 @@ class _SortingOptionsWidgetState extends ConsumerState<FilterOptionsWidget> {
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => FilterIcon(
-                  turned: ref.read(SortingOptionsProvider.notifier).state ==
+                  turned: ref.read(sortingOptionsProvider.notifier).state ==
                       listSortingOptions()[index],
                   option: listSortingOptions()[index],
                 ),

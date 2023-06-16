@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,7 +18,7 @@ class OutlinedIconButtonState extends ConsumerState<ElevatedIconButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       onPressed: widget.function,
       icon: Icon(
         widget.icon,
@@ -27,7 +26,7 @@ class OutlinedIconButtonState extends ConsumerState<ElevatedIconButton> {
         color: AppColors.mainColor,
       ),
       style: ButtonStyle(
-        elevation: MaterialStatePropertyAll(1.5),
+        elevation: const MaterialStatePropertyAll(1.5),
         backgroundColor: MaterialStatePropertyAll(AppColors.lightColor),
       ),
     );
