@@ -7,6 +7,7 @@ import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/item_page/ingredient_selector.dart';
+import 'package:meatingless/widgets/item_page/price_dialog.dart';
 import 'package:meatingless/widgets/outlined_icon_button.dart';
 import 'package:numeral/numeral.dart';
 
@@ -133,21 +134,29 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                 child: Text(item.description),
               ),
               const SizedBox(height: 24),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
-                child: ElementTitle(title: "Add Extra Ingredients"),
-              ),
-              const SizedBox(height: 8),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => IngredientSelector(
-                  ingredient:
-                      ref.read(ingredientsListProvider.notifier).state[index],
-                  index: index,
-                ),
-                itemCount: item.ingredients.length,
-              ),
+              item.ingredients.length > 0
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 24.0),
+                          child: ElementTitle(title: "Add Extra Ingredients"),
+                        ),
+                        const SizedBox(height: 8),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) => IngredientSelector(
+                            ingredient: ref
+                                .read(ingredientsListProvider.notifier)
+                                .state[index],
+                            index: index,
+                          ),
+                          itemCount: item.ingredients.length,
+                        ),
+                      ],
+                    )
+                  : Container(),
               const SizedBox(height: 80)
             ],
           ),
@@ -173,7 +182,9 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                             fontWeight: FontWeight.w600,
                             fontSize: 16),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        router.pop();
+                      },
                     ),
                   ),
                 ],
@@ -196,7 +207,16 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(30),
                     onTap: () {
-                      // TODO: info dialog appears
+                      showDialog(
+                          context: context,
+                          builder: (context) => PriceDialog(
+                              item: item,
+                              activeIngredients: ref
+                                  .read(ingredientsListProvider.notifier)
+                                  .state
+                                  .toList()
+                                  .where((element) => element.active == true)
+                                  .toList()));
                     },
                     child: Ink(
                         height: 50,

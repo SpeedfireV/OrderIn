@@ -107,15 +107,16 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                      style: const ButtonStyle(),
+                      style: ButtonStyle(
+                          minimumSize: MaterialStatePropertyAll(Size(0, 50))),
                       onPressed: () {},
                       child: const Text(
                         "Add to Cart",
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 15),
+                            fontWeight: FontWeight.w700, fontSize: 16),
                       )),
                 ),
-                const SizedBox(width: 32),
+                const SizedBox(width: 24),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -125,6 +126,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                     color: AppColors.lightColor,
                   ),
                   style: ButtonStyle(
+                      minimumSize: MaterialStatePropertyAll(Size(50, 50)),
                       backgroundColor: MaterialStateProperty.all(
                           AppColors.secondaryColor.withOpacity(0.6))),
                 ),
