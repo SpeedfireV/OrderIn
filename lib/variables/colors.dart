@@ -9,5 +9,5 @@ class AppColors {
 
   static Color lightColor = Colors.white;
   static Color turnedOffColor = const Color(0xFFE7E7E7);
-  static Color backgroundColor = Color(0xFFF5F5F5);
+  static Color backgroundColor = Color.fromARGB(255, 245, 245, 245);
 }

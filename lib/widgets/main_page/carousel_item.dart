@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
+import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/functions/rating.dart';
+import 'package:numeral/numeral.dart';
 
-import '../services/functions/price.dart';
-import '../variables/colors.dart';
+import '../../services/functions/price.dart';
+import '../../variables/colors.dart';
 
 class CarouselItem extends ConsumerStatefulWidget {
   const CarouselItem({super.key, required this.item});
@@ -21,16 +24,17 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
     return Stack(children: [
       ClipRRect(
         borderRadius: BorderRadius.circular(30),
-        child: Hero(
-          tag: item.name,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(30),
-            onTap: () {},
-            child: Ink(
-              child: Image(
-                height: double.infinity,
-                image: AssetImage(item.mainImage),
-              ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(30),
+          onTap: () {
+            router.pushNamed("item", extra: item);
+          },
+          child: Ink(
+            child: Image(
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+              image: AssetImage(item.mainImage),
             ),
           ),
         ),
@@ -38,7 +42,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
       IgnorePointer(
         child: Container(
           height: double.infinity,
-          width: 200,
+          width: 270,
           decoration: BoxDecoration(
               borderRadius:
                   const BorderRadius.horizontal(left: Radius.circular(30)),
@@ -46,7 +50,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [
-                    AppColors.mainColor.withOpacity(0.5),
+                    AppColors.mainColor.withOpacity(0.6),
                     AppColors.mainColor.withOpacity(0)
                   ])),
         ),
@@ -87,7 +91,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    "5.0 (3.8k)",
+                    "${rating(item.rating)} (${Numeral(item.numberOfRating).format()})",
                     style: TextStyle(
                         color: AppColors.lightColor,
                         fontWeight: FontWeight.w600,
@@ -96,7 +100,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             Row(
               children: [
                 Expanded(
@@ -122,7 +126,6 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                       backgroundColor: MaterialStateProperty.all(
                           AppColors.secondaryColor.withOpacity(0.6))),
                 ),
-                const SizedBox(width: 8)
               ],
             ),
           ],

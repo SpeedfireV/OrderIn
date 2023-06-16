@@ -22,12 +22,13 @@ FoodItem _$FoodItemFromJson(Map<String, dynamic> json) {
 mixin _$FoodItem {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  SortingOptions get category => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get mainImage => throw _privateConstructorUsedError;
   int get rating => throw _privateConstructorUsedError;
   int get numberOfRating => throw _privateConstructorUsedError;
   bool get favourite => throw _privateConstructorUsedError;
-  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
+  List<Ingredients> get ingredients => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,12 +44,13 @@ abstract class $FoodItemCopyWith<$Res> {
   $Res call(
       {String name,
       String description,
+      SortingOptions category,
       int price,
       String mainImage,
       int rating,
       int numberOfRating,
       bool favourite,
-      List<Ingredient> ingredients});
+      List<Ingredients> ingredients});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
   $Res call({
     Object? name = null,
     Object? description = null,
+    Object? category = null,
     Object? price = null,
     Object? mainImage = null,
     Object? rating = null,
@@ -82,6 +85,10 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as SortingOptions,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -105,7 +112,7 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as List<Ingredient>,
+              as List<Ingredients>,
     ) as $Val);
   }
 }
@@ -120,12 +127,13 @@ abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
   $Res call(
       {String name,
       String description,
+      SortingOptions category,
       int price,
       String mainImage,
       int rating,
       int numberOfRating,
       bool favourite,
-      List<Ingredient> ingredients});
+      List<Ingredients> ingredients});
 }
 
 /// @nodoc
@@ -141,6 +149,7 @@ class __$$_FoodItemCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? description = null,
+    Object? category = null,
     Object? price = null,
     Object? mainImage = null,
     Object? rating = null,
@@ -157,6 +166,10 @@ class __$$_FoodItemCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as SortingOptions,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -180,7 +193,7 @@ class __$$_FoodItemCopyWithImpl<$Res>
       ingredients: null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as List<Ingredient>,
+              as List<Ingredients>,
     ));
   }
 }
@@ -191,12 +204,13 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   const _$_FoodItem(
       {required this.name,
       required this.description,
+      required this.category,
       required this.price,
       required this.mainImage,
       required this.rating,
       required this.numberOfRating,
       required this.favourite,
-      required final List<Ingredient> ingredients})
+      required final List<Ingredients> ingredients})
       : _ingredients = ingredients;
 
   factory _$_FoodItem.fromJson(Map<String, dynamic> json) =>
@@ -207,6 +221,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   @override
   final String description;
   @override
+  final SortingOptions category;
+  @override
   final int price;
   @override
   final String mainImage;
@@ -216,9 +232,9 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   final int numberOfRating;
   @override
   final bool favourite;
-  final List<Ingredient> _ingredients;
+  final List<Ingredients> _ingredients;
   @override
-  List<Ingredient> get ingredients {
+  List<Ingredients> get ingredients {
     if (_ingredients is EqualUnmodifiableListView) return _ingredients;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_ingredients);
@@ -226,7 +242,7 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FoodItem(name: $name, description: $description, price: $price, mainImage: $mainImage, rating: $rating, numberOfRating: $numberOfRating, favourite: $favourite, ingredients: $ingredients)';
+    return 'FoodItem(name: $name, description: $description, category: $category, price: $price, mainImage: $mainImage, rating: $rating, numberOfRating: $numberOfRating, favourite: $favourite, ingredients: $ingredients)';
   }
 
   @override
@@ -236,6 +252,7 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       ..add(DiagnosticsProperty('type', 'FoodItem'))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('category', category))
       ..add(DiagnosticsProperty('price', price))
       ..add(DiagnosticsProperty('mainImage', mainImage))
       ..add(DiagnosticsProperty('rating', rating))
@@ -252,6 +269,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.mainImage, mainImage) ||
                 other.mainImage == mainImage) &&
@@ -270,6 +289,7 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       runtimeType,
       name,
       description,
+      category,
       price,
       mainImage,
       rating,
@@ -295,12 +315,13 @@ abstract class _FoodItem implements FoodItem {
   const factory _FoodItem(
       {required final String name,
       required final String description,
+      required final SortingOptions category,
       required final int price,
       required final String mainImage,
       required final int rating,
       required final int numberOfRating,
       required final bool favourite,
-      required final List<Ingredient> ingredients}) = _$_FoodItem;
+      required final List<Ingredients> ingredients}) = _$_FoodItem;
 
   factory _FoodItem.fromJson(Map<String, dynamic> json) = _$_FoodItem.fromJson;
 
@@ -308,6 +329,8 @@ abstract class _FoodItem implements FoodItem {
   String get name;
   @override
   String get description;
+  @override
+  SortingOptions get category;
   @override
   int get price;
   @override
@@ -319,7 +342,7 @@ abstract class _FoodItem implements FoodItem {
   @override
   bool get favourite;
   @override
-  List<Ingredient> get ingredients;
+  List<Ingredients> get ingredients;
   @override
   @JsonKey(ignore: true)
   _$$_FoodItemCopyWith<_$_FoodItem> get copyWith =>

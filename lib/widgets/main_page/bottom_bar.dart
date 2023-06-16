@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../variables/colors.dart';
+import '../../variables/colors.dart';
 import 'bottom_bar_item.dart';
 
 class AppBottomBar extends ConsumerStatefulWidget {

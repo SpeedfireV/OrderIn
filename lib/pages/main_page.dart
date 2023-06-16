@@ -1,15 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/variables/colors.dart';
-import 'package:meatingless/widgets/carousel_item.dart';
-import 'package:meatingless/widgets/element_title.dart';
-import 'package:meatingless/widgets/filter_options.dart';
+import 'package:meatingless/variables/images.dart';
+import 'package:meatingless/variables/ingredients_variables.dart';
+import 'package:meatingless/variables/sorting_options.dart';
+import 'package:meatingless/widgets/main_page/carousel_item.dart';
+import 'package:meatingless/widgets/general/element_title.dart';
+import 'package:meatingless/widgets/main_page/filter_options.dart';
 
 import '../services/bottom_app_bar.dart';
-import '../widgets/bottom_bar.dart';
+import '../widgets/main_page/bottom_bar.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -27,7 +29,7 @@ class _MainPageState extends ConsumerState<MainPage> {
       ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 16),
             child: SearchBar(
               leading: const Icon(Icons.search),
               hintText: "Search",
@@ -50,7 +52,7 @@ class _MainPageState extends ConsumerState<MainPage> {
           const SizedBox(height: 100, child: FilterOptionsWidget()),
           const SizedBox(height: 24),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: ElementTitle(title: "Popular Items"),
           ),
           SizedBox(height: 8),
@@ -60,9 +62,10 @@ class _MainPageState extends ConsumerState<MainPage> {
                 item: FoodItem(
                     name: "Vege Beef Burger",
                     description: "Very tasty burger.",
+                    category: SortingOptions.burgers,
                     price: 899,
-                    mainImage: "lib/assets/images/vege-beef-burger.jpg",
-                    rating: 50,
+                    mainImage: LocalImages.vegeBeefBurger,
+                    rating: 49,
                     numberOfRating: 3800,
                     favourite: false,
                     ingredients: []),
@@ -71,10 +74,11 @@ class _MainPageState extends ConsumerState<MainPage> {
                 item: FoodItem(
                     name: "NY Style Earthy Pizza",
                     description: "The impressive one.",
+                    category: SortingOptions.pizza,
                     price: 1699,
-                    mainImage: "lib/assets/images/vege-beef-burger.jpg",
-                    rating: 50,
-                    numberOfRating: 3800,
+                    mainImage: LocalImages.nyEarthyPizza,
+                    rating: 44,
+                    numberOfRating: 3500,
                     favourite: false,
                     ingredients: []),
               )
@@ -89,11 +93,11 @@ class _MainPageState extends ConsumerState<MainPage> {
           ),
           SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElementTitle(title: "Delicious Sets"),
+                ElementTitle(title: "Specials Of The Day"),
                 TextButton(
                     onPressed: () {},
                     child: Text(
@@ -104,13 +108,30 @@ class _MainPageState extends ConsumerState<MainPage> {
             ),
           ),
           SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: SizedBox(
+              height: 240,
+              child: CarouselItem(
+                  item: FoodItem(
+                      name: "Breakfast Set",
+                      description: "The impressive one.",
+                      category: SortingOptions.all,
+                      price: 3999,
+                      mainImage: LocalImages.seaSet,
+                      rating: 47,
+                      numberOfRating: 570,
+                      favourite: false,
+                      ingredients: [Ingredients.mushroom])),
+            ),
+          ),
           SizedBox(height: 100)
         ],
       ),
       const Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
             child: AppBottomBar()),
       )
     ]));

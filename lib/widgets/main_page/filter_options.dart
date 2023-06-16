@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/sorting_options.dart';
 
-import '../variables/sorting_options.dart';
+import '../../variables/sorting_options.dart';
 import 'filter_icon.dart';
 
 class FilterOptionsWidget extends ConsumerStatefulWidget {
@@ -21,7 +21,7 @@ class _SortingOptionsWidgetState extends ConsumerState<FilterOptionsWidget> {
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       children: [
-        const SizedBox(width: 16),
+        const SizedBox(width: 24),
         ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,

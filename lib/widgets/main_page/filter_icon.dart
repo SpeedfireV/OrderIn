@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/sorting_options.dart';
 import 'package:meatingless/variables/colors.dart';
-import 'package:meatingless/variables/icons.dart';
+import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/variables/sorting_options.dart';
 
 class FilterIcon extends ConsumerStatefulWidget {
@@ -26,9 +26,8 @@ class _FilterIconState extends ConsumerState<FilterIcon> {
       child: Column(children: [
         Material(
           elevation: 6,
-          shadowColor: widget.turned
-              ? AppColors.mainColor
-              : AppColors.secondaryColorLight,
+          shadowColor:
+              widget.turned ? AppColors.mainColor : AppColors.lightColor,
           shape: const CircleBorder(),
           child: Container(
             padding: const EdgeInsets.all(16),
@@ -37,8 +36,8 @@ class _FilterIconState extends ConsumerState<FilterIcon> {
                     widget.turned ? AppColors.mainColor : AppColors.lightColor,
                 shape: BoxShape.circle),
             child: Image(
-              image:
-                  AssetImage(SortingVariables.mapOfDirectories[widget.option]!),
+              image: AssetImage(
+                  SortingVariables.mapOfSortingDirectories[widget.option]!),
               width: 36,
               height: 36,
             ),
