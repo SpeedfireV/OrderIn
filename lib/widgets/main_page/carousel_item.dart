@@ -107,7 +107,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                           minimumSize: MaterialStatePropertyAll(Size(0, 50))),
                       onPressed: () {},
                       child: const Text(
@@ -126,7 +126,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                     color: AppColors.lightColor,
                   ),
                   style: ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(Size(50, 50)),
+                      minimumSize: const MaterialStatePropertyAll(Size(50, 50)),
                       backgroundColor: MaterialStateProperty.all(
                           AppColors.secondaryColor.withOpacity(0.6))),
                 ),

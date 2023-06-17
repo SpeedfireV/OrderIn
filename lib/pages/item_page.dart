@@ -3,12 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/ingredients.dart';
+import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/item_page/ingredient_selector.dart';
 import 'package:meatingless/widgets/item_page/price_dialog.dart';
-import 'package:meatingless/widgets/outlined_icon_button.dart';
+import 'package:meatingless/widgets/icon_buttons.dart';
 import 'package:numeral/numeral.dart';
 
 import '../services/functions/price.dart';
@@ -28,6 +29,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
     FoodItem item = widget.item;
     ref.watch(ingredientsPriceProvider);
     ref.watch(ingredientsListProvider);
+    ref.watch(ordersProvider);
     return Scaffold(
       body: Stack(
         children: [
@@ -134,7 +136,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                 child: Text(item.description),
               ),
               const SizedBox(height: 24),
-              item.ingredients.length > 0
+              item.ingredients.isNotEmpty
                   ? Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -184,6 +186,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                       ),
                       onPressed: () {
                         router.pop();
+                        ref.read(ordersProvider.notifier).addItem(item);
                       },
                     ),
                   ),

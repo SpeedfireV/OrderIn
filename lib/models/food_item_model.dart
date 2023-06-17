@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meatingless/variables/ingredients_variables.dart';
 import 'package:meatingless/variables/sorting_options.dart';
 
 import 'ingredient_model.dart';

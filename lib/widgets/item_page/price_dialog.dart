@@ -20,8 +20,8 @@ class PriceDialog extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          ElementTitle(title: "Price"),
-          Divider(),
+          const ElementTitle(title: "Price"),
+          const Divider(),
           ListView.builder(
             shrinkWrap: true,
             itemBuilder: (context, index) => index == 0
@@ -34,12 +34,12 @@ class PriceDialog extends ConsumerWidget {
             itemCount:
                 activeIngredients != null ? activeIngredients!.length + 1 : 1,
           ),
-          Divider(),
+          const Divider(),
           TextButton(
               onPressed: () {
                 router.pop();
               },
-              child: Text(
+              child: const Text(
                 "Close",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ))
@@ -61,7 +61,7 @@ class PriceTag extends ConsumerWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.w700),
+          style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         Text("\$${price(localPrice)}")
       ],

@@ -12,6 +12,7 @@ import 'package:meatingless/widgets/main_page/carousel_item.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/main_page/filter_options.dart';
 
+import '../routing/router.dart';
 import '../services/bottom_app_bar.dart';
 import '../widgets/main_page/bottom_bar.dart';
 
@@ -44,7 +45,9 @@ class _MainPageState extends ConsumerState<MainPage> {
                   icon: const Icon(
                     Icons.shopping_cart_outlined,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    router.pushNamed("order");
+                  },
                   color: AppColors.mainColor,
                 )
               ],
