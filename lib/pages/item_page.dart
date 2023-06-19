@@ -5,13 +5,16 @@ import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/ingredients.dart';
 import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/variables/colors.dart';
+import 'package:meatingless/variables/padding.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/item_page/ingredient_selector.dart';
 import 'package:meatingless/widgets/item_page/price_dialog.dart';
-import 'package:meatingless/widgets/icon_buttons.dart';
+import 'package:meatingless/widgets/general/icon_buttons.dart';
 import 'package:numeral/numeral.dart';
 
+import '../models/ingredient_model.dart';
+import '../services/functions/add_to_cart.dart';
 import '../services/functions/price.dart';
 import '../services/functions/rating.dart';
 
@@ -28,7 +31,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
   Widget build(BuildContext context) {
     FoodItem item = widget.item;
     ref.watch(ingredientsPriceProvider);
-    ref.watch(ingredientsListProvider);
+    List<Ingredient> ingredients = ref.watch(ingredientsListProvider);
     ref.watch(ordersProvider);
     return Scaffold(
       body: Stack(
@@ -37,7 +40,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
             children: [
               const SizedBox(height: 90),
               Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: horizontalPadding),
                   child: Text(
                     item.name,
                     style: const TextStyle(
@@ -45,7 +49,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   )),
               const SizedBox(height: 8),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,7 +99,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
               ),
               const SizedBox(height: 8),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: ColorFiltered(
@@ -111,7 +117,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
               ),
               const SizedBox(height: 16),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -132,7 +138,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
               ),
               const SizedBox(height: 8),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Text(item.description),
               ),
               const SizedBox(height: 24),
@@ -141,7 +148,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 24.0),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: horizontalPadding),
                           child: ElementTitle(title: "Add Extra Ingredients"),
                         ),
                         const SizedBox(height: 8),
@@ -149,9 +157,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) => IngredientSelector(
-                            ingredient: ref
-                                .read(ingredientsListProvider.notifier)
-                                .state[index],
+                            ingredient: ingredients[index],
                             index: index,
                           ),
                           itemCount: item.ingredients.length,
@@ -165,8 +171,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: horizontalPadding, vertical: 12),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -186,7 +192,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                       ),
                       onPressed: () {
                         router.pop();
-                        ref.read(ordersProvider.notifier).addItem(item);
+                        addToCart(item, ref, ingredients);
                       },
                     ),
                   ),
@@ -195,7 +201,8 @@ class _ItemPageState extends ConsumerState<ItemPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 16),
+            padding: const EdgeInsets.only(
+                left: horizontalPadding, right: horizontalPadding, top: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -214,9 +221,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                           context: context,
                           builder: (context) => PriceDialog(
                               item: item,
-                              activeIngredients: ref
-                                  .read(ingredientsListProvider.notifier)
-                                  .state
+                              activeIngredients: ingredients
                                   .toList()
                                   .where((element) => element.active == true)
                                   .toList()));
@@ -224,7 +229,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                     child: Ink(
                         height: 50,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
+                            horizontal: 24, vertical: 12),
                         decoration: BoxDecoration(
                             color: AppColors.lightColor,
                             borderRadius: BorderRadius.circular(30)),

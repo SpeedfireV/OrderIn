@@ -4,23 +4,32 @@ import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/models/ingredient_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/variables/ingredients_variables.dart';
-import 'package:meatingless/widgets/general/element_title.dart';
+import 'package:meatingless/variables/padding.dart';
 
 import '../../services/functions/price.dart';
 
 class PriceDialog extends ConsumerWidget {
   const PriceDialog(
-      {super.key, required this.item, required this.activeIngredients});
+      {super.key,
+      required this.item,
+      required this.activeIngredients,
+      this.customTitle});
   final FoodItem item;
   final List<Ingredient>? activeIngredients;
+  final String? customTitle;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Dialog(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+        padding: const EdgeInsets.symmetric(
+            horizontal: horizontalPadding, vertical: 8),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          const ElementTitle(title: "Price"),
+          Text(
+            customTitle ?? "Price",
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+          ),
           const Divider(),
           ListView.builder(
             shrinkWrap: true,

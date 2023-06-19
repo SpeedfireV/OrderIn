@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../variables/colors.dart';
+import '../../variables/colors.dart';
 
 class ElevatedIconButton extends ConsumerStatefulWidget {
   const ElevatedIconButton(
@@ -63,7 +63,7 @@ class _OutlinedIconButtonState extends ConsumerState<OutlinedIconButton> {
         color: AppColors.mainColor,
       ),
       style: ButtonStyle(
-        minimumSize: MaterialStatePropertyAll(Size(0, 0)),
+        minimumSize: const MaterialStatePropertyAll(Size(0, 0)),
         side: MaterialStatePropertyAll(
             BorderSide(color: AppColors.mainColorReversed)),
         backgroundColor: MaterialStatePropertyAll(AppColors.lightColor),

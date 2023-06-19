@@ -18,6 +18,7 @@ _$_FoodItem _$$_FoodItemFromJson(Map<String, dynamic> json) => _$_FoodItem(
       ingredients: (json['ingredients'] as List<dynamic>)
           .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
           .toList(),
+      amount: json['amount'] as int?,
     );
 
 Map<String, dynamic> _$$_FoodItemToJson(_$_FoodItem instance) =>
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$_FoodItemToJson(_$_FoodItem instance) =>
       'numberOfRating': instance.numberOfRating,
       'favourite': instance.favourite,
       'ingredients': instance.ingredients,
+      'amount': instance.amount,
     };
 
 const _$SortingOptionsEnumMap = {

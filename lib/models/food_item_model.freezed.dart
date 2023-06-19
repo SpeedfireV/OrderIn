@@ -29,6 +29,7 @@ mixin _$FoodItem {
   int get numberOfRating => throw _privateConstructorUsedError;
   bool get favourite => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
+  int? get amount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,8 @@ abstract class $FoodItemCopyWith<$Res> {
       int rating,
       int numberOfRating,
       bool favourite,
-      List<Ingredient> ingredients});
+      List<Ingredient> ingredients,
+      int? amount});
 }
 
 /// @nodoc
@@ -75,6 +77,7 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
     Object? numberOfRating = null,
     Object? favourite = null,
     Object? ingredients = null,
+    Object? amount = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -113,6 +116,10 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<Ingredient>,
+      amount: freezed == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -133,7 +140,8 @@ abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
       int rating,
       int numberOfRating,
       bool favourite,
-      List<Ingredient> ingredients});
+      List<Ingredient> ingredients,
+      int? amount});
 }
 
 /// @nodoc
@@ -156,6 +164,7 @@ class __$$_FoodItemCopyWithImpl<$Res>
     Object? numberOfRating = null,
     Object? favourite = null,
     Object? ingredients = null,
+    Object? amount = freezed,
   }) {
     return _then(_$_FoodItem(
       name: null == name
@@ -194,6 +203,10 @@ class __$$_FoodItemCopyWithImpl<$Res>
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<Ingredient>,
+      amount: freezed == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -210,7 +223,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       required this.rating,
       required this.numberOfRating,
       required this.favourite,
-      required final List<Ingredient> ingredients})
+      required final List<Ingredient> ingredients,
+      this.amount})
       : _ingredients = ingredients;
 
   factory _$_FoodItem.fromJson(Map<String, dynamic> json) =>
@@ -241,8 +255,11 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   }
 
   @override
+  final int? amount;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FoodItem(name: $name, description: $description, category: $category, price: $price, mainImage: $mainImage, rating: $rating, numberOfRating: $numberOfRating, favourite: $favourite, ingredients: $ingredients)';
+    return 'FoodItem(name: $name, description: $description, category: $category, price: $price, mainImage: $mainImage, rating: $rating, numberOfRating: $numberOfRating, favourite: $favourite, ingredients: $ingredients, amount: $amount)';
   }
 
   @override
@@ -258,7 +275,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('numberOfRating', numberOfRating))
       ..add(DiagnosticsProperty('favourite', favourite))
-      ..add(DiagnosticsProperty('ingredients', ingredients));
+      ..add(DiagnosticsProperty('ingredients', ingredients))
+      ..add(DiagnosticsProperty('amount', amount));
   }
 
   @override
@@ -280,7 +298,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
             (identical(other.favourite, favourite) ||
                 other.favourite == favourite) &&
             const DeepCollectionEquality()
-                .equals(other._ingredients, _ingredients));
+                .equals(other._ingredients, _ingredients) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @JsonKey(ignore: true)
@@ -295,7 +314,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       rating,
       numberOfRating,
       favourite,
-      const DeepCollectionEquality().hash(_ingredients));
+      const DeepCollectionEquality().hash(_ingredients),
+      amount);
 
   @JsonKey(ignore: true)
   @override
@@ -321,7 +341,8 @@ abstract class _FoodItem implements FoodItem {
       required final int rating,
       required final int numberOfRating,
       required final bool favourite,
-      required final List<Ingredient> ingredients}) = _$_FoodItem;
+      required final List<Ingredient> ingredients,
+      final int? amount}) = _$_FoodItem;
 
   factory _FoodItem.fromJson(Map<String, dynamic> json) = _$_FoodItem.fromJson;
 
@@ -343,6 +364,8 @@ abstract class _FoodItem implements FoodItem {
   bool get favourite;
   @override
   List<Ingredient> get ingredients;
+  @override
+  int? get amount;
   @override
   @JsonKey(ignore: true)
   _$$_FoodItemCopyWith<_$_FoodItem> get copyWith =>

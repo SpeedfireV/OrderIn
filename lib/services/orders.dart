@@ -7,15 +7,23 @@ class OrdersNotifier extends StateNotifier<Map<FoodItem, int>> {
   void addItem(FoodItem item) {
     Map<FoodItem, int> localItems = state;
     if (state.containsKey(item)) {
-      localItems[item] = state[item]! + 1;
+      state[item] = state[item]! + 1;
     } else {
       localItems[item] = 1;
     }
-    state = localItems;
+    state = {...localItems};
+  }
+
+  void decreaseItem(FoodItem item) {
+    Map<FoodItem, int> localItems = state;
+    localItems[item] = localItems[item]! - 1;
+    state = {...localItems};
   }
 
   void deleteItem(FoodItem item) {
-    state.remove(item);
+    Map<FoodItem, int> newOrders = state;
+    newOrders.remove(item);
+    state = {...newOrders};
   }
 
   void resetOrder() {
@@ -31,3 +39,5 @@ final ordersProvider =
     StateNotifierProvider<OrdersNotifier, Map<FoodItem, int>>((ref) {
   return OrdersNotifier();
 });
+
+final newItemsProvider = StateProvider((ref) => 0);

@@ -7,6 +7,8 @@ class AppColors {
   static Color secondaryColorReversed = const Color(0xFFFCB9B2);
   static Color secondaryColorLight = const Color(0xffFED0BB);
 
+  static Color alertColor = Colors.red;
+
   static Color lightColor = Colors.white;
   static Color turnedOffColor = const Color(0xFFE7E7E7);
   static Color backgroundColor = const Color.fromARGB(255, 245, 245, 245);

@@ -18,7 +18,8 @@ class FoodItem with _$FoodItem {
       required int rating,
       required int numberOfRating,
       required bool favourite,
-      required List<Ingredient> ingredients}) = _FoodItem;
+      required List<Ingredient> ingredients,
+      int? amount}) = _FoodItem;
 
   factory FoodItem.fromJson(Map<String, Object?> json) =>
       _$FoodItemFromJson(json);

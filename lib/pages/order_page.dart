@@ -3,10 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/variables/colors.dart';
-import 'package:meatingless/widgets/icon_buttons.dart';
+import 'package:meatingless/variables/padding.dart';
+import 'package:meatingless/widgets/general/icon_buttons.dart';
+import 'package:meatingless/widgets/item_page/item_listtile.dart';
 
 import '../models/food_item_model.dart';
 import '../services/functions/price.dart';
+import '../services/functions/whole_price.dart';
 
 class OrderPage extends ConsumerStatefulWidget {
   const OrderPage({super.key});
@@ -18,7 +21,7 @@ class OrderPage extends ConsumerStatefulWidget {
 class _OrderPageState extends ConsumerState<OrderPage> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(ordersProvider);
+    Map<FoodItem, int> orders = ref.watch(ordersProvider);
     return Scaffold(
       body: Stack(
         children: [
@@ -28,9 +31,11 @@ class _OrderPageState extends ConsumerState<OrderPage> {
             children: [
               Expanded(
                 child: ListView(children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 28.0, left: 24, right: 24),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                        top: 28.0,
+                        left: horizontalPadding,
+                        right: horizontalPadding),
                     child: Text(
                       "My Order",
                       textAlign: TextAlign.center,
@@ -38,120 +43,39 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                           TextStyle(fontWeight: FontWeight.w900, fontSize: 22),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 32,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: ListView.separated(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          FoodItem item = ref
-                              .read(ordersProvider.notifier)
-                              .state
-                              .keys
-                              .elementAt(index);
-                          ref.watch(ordersProvider);
-                          // TODO:  Add Responsive Number Off Products
-                          return SizedBox(
-                            height: 140,
-                            child: Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image(
-                                    fit: BoxFit.fill,
-                                    height: double.infinity,
-                                    width: 180,
-                                    image: AssetImage(item.mainImage),
-                                  ),
-                                ),
-                                SizedBox(width: 16),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          SizedBox(
-                                            width: 120,
-                                            child: Text(
-                                              item.name,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 18),
-                                            ),
-                                          ),
-                                          Text("\$${price(item.price)}"),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          OutlinedIconButton(
-                                            icon: Icons.remove,
-                                            function: () {},
-                                            size: 20,
-                                            padding: 4,
-                                          ),
-                                          Text(
-                                              "${ref.read(ordersProvider.notifier).state[item]}"),
-                                          OutlinedIconButton(
-                                            icon: Icons.add,
-                                            function: () {
-                                              ref
-                                                  .read(ordersProvider.notifier)
-                                                  .addItem(item);
-                                            },
-                                            size: 20,
-                                            padding: 4,
-                                          ),
-                                          Expanded(child: Container()),
-                                          IconButton(
-                                              onPressed: () {},
-                                              icon: Icon(
-                                                Icons.close,
-                                                color:
-                                                    AppColors.mainColorReversed,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) =>
-                            SizedBox(height: 24),
-                        itemCount:
-                            ref.read(ordersProvider.notifier).state.length),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton.icon(
-                          style: ButtonStyle(
-                              padding: MaterialStatePropertyAll(
-                                  EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 8))),
-                          onPressed: () {
-                            router.pop();
-                          },
-                          icon: Icon(Icons.add),
-                          label: Text("Add More Items")),
-                    ),
-                  ),
-                  SizedBox(height: 16)
+                  ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return ItemListTile(index: index);
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 24),
+                      itemCount: orders.length),
+                  orders.keys.toList().isNotEmpty
+                      ? Padding(
+                          padding:
+                              const EdgeInsets.only(left: horizontalPadding),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton.icon(
+                                style: const ButtonStyle(
+                                    padding: MaterialStatePropertyAll(
+                                        EdgeInsets.symmetric(
+                                            horizontal: 8, vertical: 8))),
+                                onPressed: () {
+                                  router.pop();
+                                },
+                                icon: const Icon(Icons.add),
+                                label: const Text("Add More Items")),
+                          ),
+                        )
+                      : const Center(
+                          child: Text("Your order is currently empty")),
+                  const SizedBox(height: 16)
                 ]),
               ),
               Container(
@@ -164,32 +88,33 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                     ],
                     color: AppColors.lightColor,
                     borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(30))),
+                        const BorderRadius.vertical(top: Radius.circular(30))),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: horizontalPadding),
                   child: Column(
                     children: [
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Sub Total",
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            "\$63.96",
+                            "\$${price(wholeOrderPrice(orders))}",
                             style: TextStyle(
                                 color: AppColors.mainColorReversed,
                                 fontWeight: FontWeight.w600),
                           )
                         ],
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Delivery Fee",
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
@@ -201,20 +126,20 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                           )
                         ],
                       ),
-                      Divider(
+                      const Divider(
                         height: 24,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Total",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                           Text(
-                            "\$68.96",
-                            style: TextStyle(
+                            "\$${price(wholeOrderPrice(orders) + 500)}",
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                         ],
@@ -230,6 +155,14 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                         Size(0, 56)),
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColors.mainColor)),
+                                onPressed: orders.isEmpty
+                                    ? null
+                                    : () {
+                                        ref
+                                            .read(ordersProvider.notifier)
+                                            .resetOrder();
+                                        router.pop();
+                                      },
                                 child: Text(
                                   "Checkout",
                                   style: TextStyle(
@@ -237,12 +170,6 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16),
                                 ),
-                                onPressed: () {
-                                  ref
-                                      .read(ordersProvider.notifier)
-                                      .resetOrder();
-                                  router.pop();
-                                },
                               ),
                             ),
                           ],
@@ -255,7 +182,7 @@ class _OrderPageState extends ConsumerState<OrderPage> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 16.0, left: 16),
+            padding: const EdgeInsets.only(top: 16.0, left: horizontalPadding),
             child: ElevatedIconButton(
                 icon: Icons.arrow_back,
                 function: () {

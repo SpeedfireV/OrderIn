@@ -2,15 +2,17 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
-import 'package:meatingless/models/ingredient_model.dart';
 import 'package:meatingless/services/functions/define_ingredient.dart';
+import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/images.dart';
 import 'package:meatingless/variables/ingredients_variables.dart';
+import 'package:meatingless/variables/padding.dart';
 import 'package:meatingless/variables/sorting_options.dart';
 import 'package:meatingless/widgets/main_page/carousel_item.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/main_page/filter_options.dart';
+import 'package:badges/badges.dart' as badges;
 
 import '../routing/router.dart';
 import '../services/bottom_app_bar.dart';
@@ -27,6 +29,7 @@ class _MainPageState extends ConsumerState<MainPage> {
   @override
   Widget build(BuildContext context) {
     ref.watch(bottomAppBarPositionProvider);
+    int numberOfNewItems = ref.watch(newItemsProvider);
     return Scaffold(
         body: Stack(children: [
       ListView(
@@ -42,14 +45,28 @@ class _MainPageState extends ConsumerState<MainPage> {
                   const EdgeInsets.symmetric(vertical: 4, horizontal: 16)),
               trailing: [
                 IconButton(
-                  icon: const Icon(
-                    Icons.shopping_cart_outlined,
-                  ),
+                  icon: ref.read(newItemsProvider.notifier).state > 0
+                      ? badges.Badge(
+                          badgeContent: Text(
+                            numberOfNewItems.toString(),
+                            style: TextStyle(color: AppColors.lightColor),
+                          ),
+                          badgeStyle: badges.BadgeStyle(
+                              badgeColor:
+                                  AppColors.mainColorReversed.withOpacity(0.9)),
+                          child: const Icon(
+                            Icons.shopping_cart_outlined,
+                          ),
+                        )
+                      : const Icon(
+                          Icons.shopping_cart_outlined,
+                        ),
                   onPressed: () {
                     router.pushNamed("order");
+                    ref.read(newItemsProvider.notifier).state = 0;
                   },
                   color: AppColors.mainColor,
-                )
+                ),
               ],
             ),
           ),
@@ -57,7 +74,7 @@ class _MainPageState extends ConsumerState<MainPage> {
           const SizedBox(height: 100, child: FilterOptionsWidget()),
           const SizedBox(height: 24),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: ElementTitle(title: "Popular Items"),
           ),
           const SizedBox(height: 8),
@@ -98,7 +115,7 @@ class _MainPageState extends ConsumerState<MainPage> {
           ),
           const SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -114,7 +131,7 @@ class _MainPageState extends ConsumerState<MainPage> {
           ),
           const SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: SizedBox(
               height: 240,
               child: CarouselItem(
@@ -136,7 +153,8 @@ class _MainPageState extends ConsumerState<MainPage> {
       const Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
+            padding: EdgeInsets.symmetric(
+                horizontal: horizontalPadding, vertical: 16),
             child: AppBottomBar()),
       )
     ]));

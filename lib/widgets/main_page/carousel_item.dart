@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/functions/add_to_cart.dart';
 import 'package:meatingless/services/functions/rating.dart';
 import 'package:meatingless/services/ingredients.dart';
+import 'package:meatingless/variables/padding.dart';
 import 'package:numeral/numeral.dart';
 
 import '../../services/functions/price.dart';
@@ -58,7 +60,11 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
+        padding: const EdgeInsets.only(
+            left: horizontalPadding,
+            right: horizontalPadding,
+            top: 16,
+            bottom: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -109,7 +115,9 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                   child: ElevatedButton(
                       style: const ButtonStyle(
                           minimumSize: MaterialStatePropertyAll(Size(0, 50))),
-                      onPressed: () {},
+                      onPressed: () {
+                        addToCart(item, ref, []);
+                      },
                       child: const Text(
                         "Add to Cart",
                         style: TextStyle(

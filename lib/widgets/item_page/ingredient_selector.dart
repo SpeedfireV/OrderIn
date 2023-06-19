@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/ingredients.dart';
+import 'package:meatingless/variables/padding.dart';
 
 import '../../models/ingredient_model.dart';
 import '../../services/functions/price.dart';
@@ -23,14 +24,12 @@ class _IngredientSelectorState extends ConsumerState<IngredientSelector> {
     Ingredient ingredient = widget.ingredient;
 
     ref.watch(ingredientsPriceProvider);
-    ref.watch(ingredientsListProvider);
+    List<Ingredient> ingredients = ref.watch(ingredientsListProvider);
     return CheckboxListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+      contentPadding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
       value: ingredient.active,
       onChanged: (newState) {
-        //TODO: Working ingredient state
-        Ingredient ingredientValue =
-            ref.read(ingredientsListProvider.notifier).state[widget.index];
+        Ingredient ingredientValue = ingredients[widget.index];
 
         ingredientValue.active
             ? ref.read(ingredientsPriceProvider.notifier).state -=
