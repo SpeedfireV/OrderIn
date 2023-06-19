@@ -70,7 +70,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
           children: [
             IgnorePointer(
               child: SizedBox(
-                width: 140,
+                width: 180,
                 child: Text(
                   item.name,
                   style: const TextStyle(

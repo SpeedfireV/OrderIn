@@ -26,7 +26,6 @@ class _ItemListTileState extends ConsumerState<ItemListTile> {
     int index = widget.index;
     return InkWell(
       onTap: () {
-        debugPrint("Working");
         showDialog(
             context: context,
             builder: (context) => PriceDialog(
@@ -63,7 +62,7 @@ class _ItemListTileState extends ConsumerState<ItemListTile> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        width: 120,
+                        width: 260,
                         child: Text(
                           orders.keys
                                   .toList()
@@ -73,7 +72,7 @@ class _ItemListTileState extends ConsumerState<ItemListTile> {
                               ? orders.keys.toList()[widget.index].name
                               : "${orders.keys.toList()[widget.index].name} (With Extras)",
                           style: const TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 18),
+                              fontWeight: FontWeight.w600, fontSize: 17),
                         ),
                       ),
                       Text(

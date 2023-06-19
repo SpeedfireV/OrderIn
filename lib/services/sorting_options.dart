@@ -1,15 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/variables/sorting_options.dart';
 
-class SortingOptionsNotifier extends StateNotifier<SortingOptions> {
-  SortingOptionsNotifier() : super(SortingOptions.all);
+class SortingOptionsNotifier extends StateNotifier<FilterOptions> {
+  SortingOptionsNotifier() : super(FilterOptions.all);
 
-  void changeOption(SortingOptions newOption) {
+  void changeOption(FilterOptions newOption) {
     state = newOption;
   }
 }
 
 final sortingOptionsProvider =
-    StateNotifierProvider<SortingOptionsNotifier, SortingOptions>((ref) {
+    StateNotifierProvider<SortingOptionsNotifier, FilterOptions>((ref) {
   return SortingOptionsNotifier();
 });

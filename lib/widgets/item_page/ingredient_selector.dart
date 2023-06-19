@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/ingredients.dart';
+import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
 
 import '../../models/ingredient_model.dart';
@@ -39,13 +40,25 @@ class _IngredientSelectorState extends ConsumerState<IngredientSelector> {
                 IngredientsVariables
                     .mapOfIngredientsPrice[ingredientValue.ingredientEnum]!;
         ref.read(ingredientsListProvider.notifier).changeActive(widget.index);
-        debugPrint(
-            "Current Extra Price is ${ref.read(ingredientsPriceProvider.notifier).state}");
       },
       title: Text(IngredientsVariables
           .mapOfIngredientsName[ingredient.ingredientEnum]!),
-      subtitle: Text(
-          "${IngredientsVariables.mapOfIngredientsVolume[ingredient.ingredientEnum]} +\$${price(IngredientsVariables.mapOfIngredientsPrice[ingredient.ingredientEnum]!)}"),
+      subtitle: RichText(
+          text: TextSpan(
+              style: TextStyle(color: AppColors.mainColorReversed),
+              children: [
+            IngredientsVariables
+                        .mapOfIngredientsVolume[ingredient.ingredientEnum] !=
+                    ""
+                ? TextSpan(
+                    text:
+                        "${IngredientsVariables.mapOfIngredientsVolume[ingredient.ingredientEnum]} ",
+                    style: TextStyle(color: AppColors.mainColor))
+                : TextSpan(text: ""),
+            TextSpan(
+                text:
+                    "+\$${price(IngredientsVariables.mapOfIngredientsPrice[ingredient.ingredientEnum]!)}")
+          ])),
       secondary: Image(
           width: 24,
           height: 24,

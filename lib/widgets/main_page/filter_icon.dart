@@ -8,7 +8,7 @@ import 'package:meatingless/variables/sorting_options.dart';
 class FilterIcon extends ConsumerStatefulWidget {
   const FilterIcon({super.key, required this.turned, required this.option});
   final bool turned;
-  final SortingOptions option;
+  final FilterOptions option;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _FilterIconState();

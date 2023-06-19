@@ -22,7 +22,7 @@ FoodItem _$FoodItemFromJson(Map<String, dynamic> json) {
 mixin _$FoodItem {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  SortingOptions get category => throw _privateConstructorUsedError;
+  FilterOptions get category => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get mainImage => throw _privateConstructorUsedError;
   int get rating => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $FoodItemCopyWith<$Res> {
   $Res call(
       {String name,
       String description,
-      SortingOptions category,
+      FilterOptions category,
       int price,
       String mainImage,
       int rating,
@@ -91,7 +91,7 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as SortingOptions,
+              as FilterOptions,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
   $Res call(
       {String name,
       String description,
-      SortingOptions category,
+      FilterOptions category,
       int price,
       String mainImage,
       int rating,
@@ -178,7 +178,7 @@ class __$$_FoodItemCopyWithImpl<$Res>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as SortingOptions,
+              as FilterOptions,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -235,7 +235,7 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   @override
   final String description;
   @override
-  final SortingOptions category;
+  final FilterOptions category;
   @override
   final int price;
   @override
@@ -335,7 +335,7 @@ abstract class _FoodItem implements FoodItem {
   const factory _FoodItem(
       {required final String name,
       required final String description,
-      required final SortingOptions category,
+      required final FilterOptions category,
       required final int price,
       required final String mainImage,
       required final int rating,
@@ -351,7 +351,7 @@ abstract class _FoodItem implements FoodItem {
   @override
   String get description;
   @override
-  SortingOptions get category;
+  FilterOptions get category;
   @override
   int get price;
   @override

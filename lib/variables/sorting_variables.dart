@@ -3,20 +3,22 @@ import 'package:meatingless/variables/sorting_options.dart';
 const String _directory = "lib/assets/icons/";
 
 class SortingVariables {
-  static Map<SortingOptions, String> mapOfSortingDirectories = {
-    SortingOptions.all: "${_directory}all.png",
-    SortingOptions.burgers: "${_directory}burger.png",
-    SortingOptions.pizza: "${_directory}pizza.png",
-    SortingOptions.noodles: "${_directory}ramen.png",
-    SortingOptions.salads: "${_directory}salad.png",
-    SortingOptions.drinks: "${_directory}cocktail.png",
+  static Map<FilterOptions, String> mapOfSortingDirectories = {
+    FilterOptions.all: "${_directory}all.png",
+    FilterOptions.burgers: "${_directory}burger.png",
+    FilterOptions.pizza: "${_directory}pizza.png",
+    FilterOptions.noodles: "${_directory}ramen.png",
+    FilterOptions.salads: "${_directory}salad.png",
+    FilterOptions.drinks: "${_directory}cocktail.png",
+    FilterOptions.special: "${_directory}cocktail.png",
   };
-  static Map<SortingOptions, String> mapOfTitles = {
-    SortingOptions.all: "All",
-    SortingOptions.burgers: "Burger",
-    SortingOptions.pizza: "Pizza",
-    SortingOptions.noodles: "Noodle",
-    SortingOptions.salads: "Salad",
-    SortingOptions.drinks: "Drink",
+  static Map<FilterOptions, String> mapOfTitles = {
+    FilterOptions.all: "All",
+    FilterOptions.burgers: "Burger",
+    FilterOptions.pizza: "Pizza",
+    FilterOptions.noodles: "Noodle",
+    FilterOptions.salads: "Salad",
+    FilterOptions.drinks: "Drink",
+    FilterOptions.special: "Special"
   };
 }

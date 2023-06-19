@@ -12,7 +12,7 @@ class FoodItem with _$FoodItem {
   const factory FoodItem(
       {required String name,
       required String description,
-      required SortingOptions category,
+      required FilterOptions category,
       required int price,
       required String mainImage,
       required int rating,

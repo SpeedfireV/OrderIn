@@ -36,10 +36,10 @@ Map<String, dynamic> _$$_FoodItemToJson(_$_FoodItem instance) =>
     };
 
 const _$SortingOptionsEnumMap = {
-  SortingOptions.all: 'all',
-  SortingOptions.burgers: 'burgers',
-  SortingOptions.pizza: 'pizza',
-  SortingOptions.salads: 'salads',
-  SortingOptions.noodles: 'noodles',
-  SortingOptions.drinks: 'drinks',
+  FilterOptions.all: 'all',
+  FilterOptions.burgers: 'burgers',
+  FilterOptions.pizza: 'pizza',
+  FilterOptions.salads: 'salads',
+  FilterOptions.noodles: 'noodles',
+  FilterOptions.drinks: 'drinks',
 };
