@@ -54,7 +54,7 @@ class _IngredientSelectorState extends ConsumerState<IngredientSelector> {
                     text:
                         "${IngredientsVariables.mapOfIngredientsVolume[ingredient.ingredientEnum]} ",
                     style: TextStyle(color: AppColors.mainColor))
-                : TextSpan(text: ""),
+                : const TextSpan(text: ""),
             TextSpan(
                 text:
                     "+\$${price(IngredientsVariables.mapOfIngredientsPrice[ingredient.ingredientEnum]!)}")

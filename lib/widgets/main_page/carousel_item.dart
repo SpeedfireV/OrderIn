@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/all_items.dart';
 import 'package:meatingless/services/functions/add_to_cart.dart';
 import 'package:meatingless/services/functions/rating.dart';
 import 'package:meatingless/services/ingredients.dart';
@@ -23,6 +24,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
   @override
   Widget build(BuildContext context) {
     FoodItem item = widget.item;
+    ref.watch(allItemsProvider);
 
     return Stack(children: [
       ClipRRect(
@@ -126,7 +128,9 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                 ),
                 const SizedBox(width: 24),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.read(allItemsProvider.notifier).changeFavorite(item);
+                  },
                   icon: Icon(
                     item.favourite
                         ? Icons.favorite_rounded

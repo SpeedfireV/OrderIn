@@ -60,12 +60,12 @@ class AllItems extends StateNotifier<List<FoodItem>> {
   AllItems() : super(allItems);
 
   void changeFavorite(FoodItem item) {
-    int index = 0;
+    int index = -1;
     for (FoodItem currentItem in state) {
+      index += 1;
       if (currentItem == item) {
         break;
       }
-      index += 1;
     }
     List<FoodItem> newState = state;
     newState = newState.sublist(0, index) +
@@ -73,7 +73,24 @@ class AllItems extends StateNotifier<List<FoodItem>> {
         newState.sublist(index + 1);
     state = newState;
   }
+
+  int findItem(FoodItem item) {
+    int index = -1;
+
+    for (FoodItem currentItem in state) {
+      index += 1;
+      if (currentItem == item) {
+        return index;
+      }
+    }
+    return 0;
+  }
 }
 
-final AllItemsProvider =
+final allItemsProvider =
     StateNotifierProvider<AllItems, List<FoodItem>>((ref) => AllItems());
+
+late FoodItem globalCurrentItem;
+
+final currentItemProvider =
+    StateProvider.autoDispose<FoodItem>((ref) => globalCurrentItem);

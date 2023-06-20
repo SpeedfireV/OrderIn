@@ -27,12 +27,18 @@ class _AppBottomBarState extends ConsumerState<AppBottomBar> {
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            AppBottomBarItem(icon: Icons.history, label: "history"),
+            AppBottomBarItem(
+              icon: Icons.history,
+              position: 0,
+            ),
             AppBottomBarItem(
               icon: Icons.home,
-              label: "home",
+              position: 1,
             ),
-            AppBottomBarItem(icon: Icons.person, label: "profile")
+            AppBottomBarItem(
+              icon: Icons.person,
+              position: 2,
+            )
           ]),
         ),
       ),

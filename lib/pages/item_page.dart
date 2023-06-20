@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/all_items.dart';
 import 'package:meatingless/services/ingredients.dart';
 import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/variables/colors.dart';
@@ -28,11 +29,19 @@ class ItemPage extends ConsumerStatefulWidget {
 
 class _ItemPageState extends ConsumerState<ItemPage> {
   @override
+  void initState() {
+    super.initState();
+    globalCurrentItem = widget.item;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    FoodItem item = widget.item;
     ref.watch(ingredientsPriceProvider);
     List<Ingredient> ingredients = ref.watch(ingredientsListProvider);
     ref.watch(ordersProvider);
+    List<FoodItem> items = ref.watch(allItemsProvider);
+    FoodItem item = ref.watch(currentItemProvider);
+
     return Scaffold(
       body: Stack(
         children: [
@@ -122,17 +131,6 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElementTitle(title: "Details"),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.schedule),
-                        SizedBox(width: 4),
-                        Text(
-                          "15 min",
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    )
                   ],
                 ),
               ),
@@ -242,7 +240,18 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                   ),
                 ),
                 ElevatedIconButton(
-                    icon: Icons.favorite_outline_rounded, function: () {})
+                    icon: item.favourite
+                        ? Icons.favorite_rounded
+                        : Icons.favorite_outline_rounded,
+                    function: () {
+                      ref.read(allItemsProvider.notifier).changeFavorite(item);
+                      ref.read(currentItemProvider.notifier).state =
+                          item.copyWith(favourite: !item.favourite);
+
+                      debugPrint(
+                          items.where((element) => element == item).toString());
+                      debugPrint((!item.favourite).toString());
+                    })
               ],
             ),
           ),

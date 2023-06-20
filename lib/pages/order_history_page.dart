@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meatingless/widgets/general/element_title.dart';
 
 class HistoryPage extends ConsumerStatefulWidget {
   const HistoryPage({super.key});
@@ -11,6 +12,16 @@ class HistoryPage extends ConsumerStatefulWidget {
 class _OrderHistoryState extends ConsumerState<HistoryPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: ListView(shrinkWrap: true, children: [
+        ElementTitle(title: "Order History"),
+        ListView.builder(
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (context, index) => const Row(
+                  children: [Text("data")],
+                ))
+      ]),
+    );
   }
 }
