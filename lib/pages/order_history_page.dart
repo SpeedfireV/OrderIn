@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meatingless/models/database_model.dart';
+import 'package:meatingless/services/order_history.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
 
 class HistoryPage extends ConsumerStatefulWidget {
@@ -12,15 +14,24 @@ class HistoryPage extends ConsumerStatefulWidget {
 class _OrderHistoryState extends ConsumerState<HistoryPage> {
   @override
   Widget build(BuildContext context) {
+    List<FoodItemDb> items = ref.watch(orderHistoryProvider);
     return Scaffold(
-      body: ListView(shrinkWrap: true, children: [
-        ElementTitle(title: "Order History"),
+      body: ListView(children: [
+        const SizedBox(height: 16),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElementTitle(title: "Order History"),
+          ],
+        ),
+        const SizedBox(height: 8),
         ListView.builder(
             shrinkWrap: true,
-            itemCount: 5,
-            itemBuilder: (context, index) => const Row(
-                  children: [Text("data")],
-                ))
+            itemCount: items.length,
+            itemBuilder: (context, index) => ListTile(
+                onTap: () {},
+                leading: const Icon(Icons.lock_clock),
+                title: Text(items[index].addTime.toString())))
       ]),
     );
   }

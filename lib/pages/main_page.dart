@@ -32,7 +32,7 @@ class _MainPageState extends ConsumerState<MainPage> {
     ref.watch(bottomAppBarPositionProvider);
     ref.listen(bottomAppBarPositionProvider, (previous, next) {
       controller.animateToPage(next,
-          duration: Duration(milliseconds: 400), curve: Curves.ease);
+          duration: const Duration(milliseconds: 400), curve: Curves.ease);
     });
     return Scaffold(
         body: Stack(children: [
@@ -41,12 +41,12 @@ class _MainPageState extends ConsumerState<MainPage> {
           ref.read(bottomAppBarPositionProvider.notifier).changePosition(value);
         },
         controller: controller,
-        children: [
+        children: const [
           HistoryPage(),
           HomePage(),
         ],
       ),
-      Align(
+      const Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
             padding: EdgeInsets.symmetric(
