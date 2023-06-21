@@ -1,5 +1,6 @@
 import 'package:meatingless/variables/ingredients_variables.dart';
 
+import '../../models/database_model.dart';
 import '../../models/food_item_model.dart';
 import '../../models/ingredient_model.dart';
 
@@ -28,4 +29,12 @@ int wholeItemPrice(FoodItem item) {
   }
   sum += item.price;
   return sum;
+}
+
+int wholeHistoryPrice(List<FoodItemDb> items) {
+  int cost = 0;
+  for (FoodItemDb item in items) {
+    cost += item.price * item.amount;
+  }
+  return cost;
 }

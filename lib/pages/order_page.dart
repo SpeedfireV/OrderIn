@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/database.dart';
 import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
@@ -158,6 +159,10 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                 onPressed: orders.isEmpty
                                     ? null
                                     : () {
+                                        DatabaseServices().addOrder(
+                                            orders.keys.toList(),
+                                            orders.values.toList(),
+                                            ref);
                                         ref
                                             .read(ordersProvider.notifier)
                                             .resetOrder();

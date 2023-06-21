@@ -21,13 +21,14 @@ class FoodItemDbAdapter extends TypeAdapter<FoodItemDb> {
       price: fields[1] as int,
       extras: fields[2] as bool,
       addTime: fields[3] as DateTime,
+      amount: fields[4] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, FoodItemDb obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class FoodItemDbAdapter extends TypeAdapter<FoodItemDb> {
       ..writeByte(2)
       ..write(obj.extras)
       ..writeByte(3)
-      ..write(obj.addTime);
+      ..write(obj.addTime)
+      ..writeByte(4)
+      ..write(obj.amount);
   }
 
   @override

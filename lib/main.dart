@@ -6,11 +6,12 @@ import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/variables/colors.dart';
 
-void main() {
-  Hive.initFlutter();
+void main() async {
+  await Hive.initFlutter();
 
   Hive.registerAdapter(FoodItemDbAdapter());
-  Hive.openBox("history");
+  Hive.openBox<List<FoodItemDb>>("history");
+
   runApp(const ProviderScope(child: MainApp()));
 }
 

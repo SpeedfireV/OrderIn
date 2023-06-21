@@ -12,10 +12,13 @@ class FoodItemDb {
   bool extras;
   @HiveField(3)
   DateTime addTime;
+  @HiveField(4)
+  int amount;
 
   FoodItemDb(
       {required this.name,
       required this.price,
       required this.extras,
-      required this.addTime});
+      required this.addTime,
+      required this.amount});
 }
