@@ -20,4 +20,7 @@ Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
 
 const _$IngredientsEnumMap = {
   Ingredients.mushroom: 'mushroom',
+  Ingredients.extraSoySauce: 'extraSoySauce',
+  Ingredients.chiliFlakes: 'chiliFlakes',
+  Ingredients.kimchi: 'kimchi',
 };

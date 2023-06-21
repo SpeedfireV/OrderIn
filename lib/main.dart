@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/variables/colors.dart';
 
 void main() {
+  Hive.initFlutter();
+
+  Hive.registerAdapter(FoodItemDbAdapter());
+  Hive.openBox("history");
   runApp(const ProviderScope(child: MainApp()));
 }
 

@@ -32,118 +32,127 @@ class _HomePageState extends ConsumerState<HomePage> {
     int numberOfNewItems = ref.watch(newItemsProvider);
     List<FoodItem> items = ref.watch(allItemsProvider);
     FilterOptions currentFilter = ref.watch(sortingOptionsProvider);
-    return ListView(
+    return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(
-              left: horizontalPadding, right: horizontalPadding, top: 16),
-          child: SearchBar(
-            leading: const Icon(Icons.search),
-            hintText: "Search",
-            surfaceTintColor: MaterialStateProperty.all(AppColors.lightColor),
-            backgroundColor: MaterialStateProperty.all(AppColors.lightColor),
-            padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 4, horizontal: 16)),
-            trailing: [
-              IconButton(
-                icon: ref.read(newItemsProvider.notifier).state > 0
-                    ? badges.Badge(
-                        badgeContent: Text(
-                          numberOfNewItems.toString(),
-                          style: TextStyle(color: AppColors.lightColor),
-                        ),
-                        badgeStyle: badges.BadgeStyle(
-                            badgeColor:
-                                AppColors.mainColorReversed.withOpacity(0.9)),
-                        child: const Icon(
-                          Icons.shopping_cart_outlined,
-                        ),
-                      )
-                    : const Icon(
-                        Icons.shopping_cart_outlined,
-                      ),
-                onPressed: () {
-                  router.pushNamed("order");
-                  ref.read(newItemsProvider.notifier).state = 0;
+        ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: horizontalPadding, right: horizontalPadding, top: 16),
+              child: SearchBar(
+                onChanged: (newValue) {
+                  debugPrint(newValue);
                 },
-                color: AppColors.mainColor,
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 24),
-        const SizedBox(height: 100, child: FilterOptionsWidget()),
-        const SizedBox(height: 24),
-        currentFilter == FilterOptions.all
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: horizontalPadding),
-                    child: ElementTitle(title: "Popular Items"),
-                  ),
-                  const SizedBox(height: 8),
-                  CarouselSlider.builder(
-                    itemBuilder: (context, index, realIndex) {
-                      return CarouselItem(
-                          item: items
-                              .where((element) =>
-                                  element.rating > 45 &&
-                                  element.numberOfRating > 500 &&
-                                  element.category != FilterOptions.special)
-                              .elementAt(index));
+                leading: const Icon(Icons.search),
+                hintText: "Search",
+                surfaceTintColor:
+                    MaterialStateProperty.all(AppColors.lightColor),
+                backgroundColor:
+                    MaterialStateProperty.all(AppColors.lightColor),
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(vertical: 4, horizontal: 16)),
+                trailing: [
+                  IconButton(
+                    icon: ref.read(newItemsProvider.notifier).state > 0
+                        ? badges.Badge(
+                            badgeContent: Text(
+                              numberOfNewItems.toString(),
+                              style: TextStyle(color: AppColors.lightColor),
+                            ),
+                            badgeStyle: badges.BadgeStyle(
+                                badgeColor: AppColors.mainColorReversed
+                                    .withOpacity(0.9)),
+                            child: const Icon(
+                              Icons.shopping_cart_outlined,
+                            ),
+                          )
+                        : const Icon(
+                            Icons.shopping_cart_outlined,
+                          ),
+                    onPressed: () {
+                      router.pushNamed("order");
+                      ref.read(newItemsProvider.notifier).state = 0;
                     },
-                    itemCount: items
-                        .where((element) =>
-                            element.rating > 45 &&
-                            element.numberOfRating > 400 &&
-                            element.category != FilterOptions.special)
-                        .length,
-                    options: CarouselOptions(
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 1200),
-                      autoPlayInterval: const Duration(milliseconds: 4500),
-                      enlargeCenterPage: true,
-                      height: 260,
-                      autoPlay: true,
-                    ),
+                    color: AppColors.mainColor,
                   ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: horizontalPadding),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const ElementTitle(title: "Specials Of The Day"),
-                        TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "See All",
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ))
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: horizontalPadding),
-                    child: SizedBox(
-                      height: 240,
-                      child: CarouselItem(
-                          item: items.firstWhere((element) =>
-                              element.category == FilterOptions.special)),
-                    ),
-                  ),
-                  const SizedBox(height: 100),
                 ],
-              )
-            : FilteredItemsView(
-                filter: currentFilter,
-              )
+              ),
+            ),
+            const SizedBox(height: 24),
+            const SizedBox(height: 100, child: FilterOptionsWidget()),
+            const SizedBox(height: 24),
+            currentFilter == FilterOptions.all
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: horizontalPadding),
+                        child: ElementTitle(title: "Popular Items"),
+                      ),
+                      const SizedBox(height: 8),
+                      CarouselSlider.builder(
+                        itemBuilder: (context, index, realIndex) {
+                          return CarouselItem(
+                              item: items
+                                  .where((element) =>
+                                      element.rating > 45 &&
+                                      element.numberOfRating > 500 &&
+                                      element.category != FilterOptions.special)
+                                  .elementAt(index));
+                        },
+                        itemCount: items
+                            .where((element) =>
+                                element.rating > 45 &&
+                                element.numberOfRating > 400 &&
+                                element.category != FilterOptions.special)
+                            .length,
+                        options: CarouselOptions(
+                          autoPlayAnimationDuration:
+                              const Duration(milliseconds: 1200),
+                          autoPlayInterval: const Duration(milliseconds: 4500),
+                          enlargeCenterPage: true,
+                          height: 260,
+                          autoPlay: true,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: horizontalPadding),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const ElementTitle(title: "Specials Of The Day"),
+                            TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  "See All",
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ))
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: horizontalPadding),
+                        child: SizedBox(
+                          height: 240,
+                          child: CarouselItem(
+                              item: items.firstWhere((element) =>
+                                  element.category == FilterOptions.special)),
+                        ),
+                      ),
+                      const SizedBox(height: 100),
+                    ],
+                  )
+                : FilteredItemsView(
+                    filter: currentFilter,
+                  )
+          ],
+        ),
       ],
     );
   }

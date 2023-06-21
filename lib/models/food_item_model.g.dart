@@ -9,7 +9,7 @@ part of 'food_item_model.dart';
 _$_FoodItem _$$_FoodItemFromJson(Map<String, dynamic> json) => _$_FoodItem(
       name: json['name'] as String,
       description: json['description'] as String,
-      category: $enumDecode(_$SortingOptionsEnumMap, json['category']),
+      category: $enumDecode(_$FilterOptionsEnumMap, json['category']),
       price: json['price'] as int,
       mainImage: json['mainImage'] as String,
       rating: json['rating'] as int,
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$_FoodItemToJson(_$_FoodItem instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
-      'category': _$SortingOptionsEnumMap[instance.category]!,
+      'category': _$FilterOptionsEnumMap[instance.category]!,
       'price': instance.price,
       'mainImage': instance.mainImage,
       'rating': instance.rating,
@@ -35,11 +35,12 @@ Map<String, dynamic> _$$_FoodItemToJson(_$_FoodItem instance) =>
       'amount': instance.amount,
     };
 
-const _$SortingOptionsEnumMap = {
+const _$FilterOptionsEnumMap = {
   FilterOptions.all: 'all',
   FilterOptions.burgers: 'burgers',
   FilterOptions.pizza: 'pizza',
   FilterOptions.salads: 'salads',
   FilterOptions.noodles: 'noodles',
   FilterOptions.drinks: 'drinks',
+  FilterOptions.special: 'special',
 };
