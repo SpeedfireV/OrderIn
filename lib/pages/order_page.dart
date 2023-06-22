@@ -161,8 +161,7 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                     : () {
                                         DatabaseServices().addOrder(
                                             orders.keys.toList(),
-                                            orders.values.toList(),
-                                            ref);
+                                            orders.values.toList());
                                         ref
                                             .read(ordersProvider.notifier)
                                             .resetOrder();

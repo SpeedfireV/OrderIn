@@ -31,7 +31,7 @@ int wholeItemPrice(FoodItem item) {
   return sum;
 }
 
-int wholeHistoryPrice(List<FoodItemDb> items) {
+int wholeHistoryPrice(List items) {
   int cost = 0;
   for (FoodItemDb item in items) {
     cost += item.price * item.amount;

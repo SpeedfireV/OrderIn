@@ -8,7 +8,7 @@ String dateToString(DateTime date) {
     days = "0$days";
   }
   if (months.length == 1) {
-    months == "0$months";
+    months = "0$months";
   }
   if (minutes.length == 1) {
     minutes = "0$minutes";

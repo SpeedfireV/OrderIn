@@ -1,15 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/database.dart';
-import '../models/database_model.dart';
 
-class OrderHistoryNotifier extends StateNotifier<Iterable<List<FoodItemDb>>> {
+class OrderHistoryNotifier extends StateNotifier<Iterable<List>> {
   OrderHistoryNotifier() : super(DatabaseServices().getOrders());
 
-  void addToHistory(List<FoodItemDb> order) {
+  void addToHistory(List order) {
     state = [...state, order];
+  }
+
+  Iterable<List> getHistory() {
+    return state;
   }
 }
 
 final orderHistoryProvider =
-    StateNotifierProvider<OrderHistoryNotifier, Iterable<List<FoodItemDb>>>(
+    StateNotifierProvider<OrderHistoryNotifier, Iterable<List>>(
         (ref) => OrderHistoryNotifier());
