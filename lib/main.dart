@@ -10,7 +10,9 @@ void main() async {
   await Hive.initFlutter();
 
   Hive.registerAdapter(FoodItemDbAdapter());
-  Hive.openBox<List>("history");
+  Hive.registerAdapter(ProfileDbAdapter());
+  await Hive.openBox<List>("history");
+  await Hive.openBox<ProfileDb>("profile");
 
   runApp(const ProviderScope(child: MainApp()));
 }

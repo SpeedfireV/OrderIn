@@ -8,6 +8,7 @@ class AppColors {
   static Color secondaryColorLight = const Color(0xffFED0BB);
 
   static Color alertColor = Colors.red;
+  static Color okColor = Colors.green;
 
   static Color lightColor = Colors.white;
   static Color turnedOffColor = const Color(0xFFE7E7E7);

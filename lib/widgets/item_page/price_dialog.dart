@@ -31,8 +31,9 @@ class PriceDialog extends ConsumerWidget {
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
           ),
           const Divider(),
-          ListView.builder(
+          ListView.separated(
             shrinkWrap: true,
+            separatorBuilder: (context, index) => const SizedBox(height: 4),
             itemBuilder: (context, index) => index == 0
                 ? PriceTag(title: item.name, localPrice: item.price)
                 : PriceTag(
@@ -44,6 +45,15 @@ class PriceDialog extends ConsumerWidget {
                 activeIngredients != null ? activeIngredients!.length + 1 : 1,
           ),
           const Divider(),
+          PriceTag(
+              title: "Total Price",
+              localPrice: activeIngredients != null
+                  ? activeIngredients!.fold(
+                      item.price,
+                      (previousValue, element) => (previousValue +
+                          IngredientsVariables
+                              .mapOfIngredientsPrice[element.ingredientEnum]!))
+                  : item.price),
           TextButton(
               onPressed: () {
                 router.pop();
@@ -68,10 +78,14 @@ class PriceTag extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.w700),
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 2,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
         ),
+        const SizedBox(width: 4),
         Text("\$${price(localPrice)}")
       ],
     );

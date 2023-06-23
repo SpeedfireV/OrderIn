@@ -22,3 +22,17 @@ class FoodItemDb {
       required this.addTime,
       required this.amount});
 }
+
+@HiveType(typeId: 2)
+class ProfileDb {
+  @HiveField(0)
+  String name;
+  @HiveField(1)
+  String street;
+  @HiveField(2)
+  String phone;
+
+  ProfileDb({required this.name, required this.street, required this.phone});
+}
+
+// @SpeedfireV TODO: Favorite database

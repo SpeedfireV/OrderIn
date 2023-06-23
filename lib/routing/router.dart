@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/pages/item_page.dart';
 import 'package:meatingless/pages/main_page.dart';
@@ -22,7 +23,12 @@ final router = GoRouter(routes: [
   GoRoute(
     path: "/profile",
     name: "profile",
-    builder: (context, state) => const ProfilePage(),
+    builder: (context, state) {
+      ProfileDb profile = state.extra as ProfileDb;
+      return ProfilePage(
+        currentProfile: profile,
+      );
+    },
   ),
   GoRoute(
       path: "/item",

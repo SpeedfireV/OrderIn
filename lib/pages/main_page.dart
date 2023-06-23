@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/pages/home_page.dart';
 import 'package:meatingless/pages/order_history_page.dart';
+import 'package:meatingless/pages/profile_page.dart';
 import 'package:meatingless/services/bottom_app_bar.dart';
+import 'package:meatingless/services/profile.dart';
 import 'package:meatingless/variables/padding.dart';
 import '../widgets/main_page/bottom_bar.dart';
 
@@ -31,8 +33,13 @@ class _MainPageState extends ConsumerState<MainPage> {
   Widget build(BuildContext context) {
     ref.watch(bottomAppBarPositionProvider);
     ref.listen(bottomAppBarPositionProvider, (previous, next) {
-      controller.animateToPage(next,
-          duration: const Duration(milliseconds: 400), curve: Curves.ease);
+      debugPrint(next.toString());
+      if (previous != null && (next - previous).abs() == 1) {
+        controller.animateToPage(next,
+            duration: const Duration(milliseconds: 400), curve: Curves.ease);
+      } else {
+        controller.jumpToPage(next);
+      }
     });
     return Scaffold(
         body: Stack(children: [
@@ -41,9 +48,12 @@ class _MainPageState extends ConsumerState<MainPage> {
           ref.read(bottomAppBarPositionProvider.notifier).changePosition(value);
         },
         controller: controller,
-        children: const [
-          HistoryPage(),
-          HomePage(),
+        children: [
+          const HistoryPage(),
+          const HomePage(),
+          ProfilePage(
+            currentProfile: ref.read(profileProvider.notifier).state,
+          )
         ],
       ),
       const Align(
