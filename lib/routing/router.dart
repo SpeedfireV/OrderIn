@@ -24,9 +24,11 @@ final router = GoRouter(routes: [
     path: "/profile",
     name: "profile",
     builder: (context, state) {
-      ProfileDb profile = state.extra as ProfileDb;
+      List profile = state.extra as List;
+
       return ProfilePage(
-        currentProfile: profile,
+        currentProfile: profile.elementAt(0),
+        needed: profile.length > 1 ? profile.elementAt(1) : null,
       );
     },
   ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/database.dart';
 import 'package:meatingless/services/orders.dart';
+import 'package:meatingless/services/profile.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
 import 'package:meatingless/widgets/general/icon_buttons.dart';
@@ -23,6 +25,7 @@ class _OrderPageState extends ConsumerState<OrderPage> {
   @override
   Widget build(BuildContext context) {
     Map<FoodItem, int> orders = ref.watch(ordersProvider);
+    ProfileDb profile = ref.watch(profileProvider);
     return Scaffold(
       body: Stack(
         children: [
@@ -159,13 +162,48 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                 onPressed: orders.isEmpty
                                     ? null
                                     : () {
-                                        DatabaseServices().addOrder(
-                                            orders.keys.toList(),
-                                            orders.values.toList());
-                                        ref
-                                            .read(ordersProvider.notifier)
-                                            .resetOrder();
-                                        router.pop();
+                                        // if textFields filled
+                                        if (profile.name != "" &&
+                                            profile.phone != "" &&
+                                            profile.street != "") {
+                                          DatabaseServices().addOrder(
+                                              orders.keys.toList(),
+                                              orders.values.toList());
+                                          ref
+                                              .read(ordersProvider.notifier)
+                                              .resetOrder();
+                                          router.pop();
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  backgroundColor:
+                                                      AppColors.secondaryColor,
+                                                  duration: Duration(
+                                                      milliseconds: 3000),
+                                                  behavior:
+                                                      SnackBarBehavior.floating,
+                                                  margin: EdgeInsets.all(16),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  content: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            2.0),
+                                                    child: Text(
+                                                      "Fill all fields",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          fontSize: 17),
+                                                    ),
+                                                  )));
+                                          router.pushNamed("profile",
+                                              extra: [profile, true]);
+                                        }
                                       },
                                 child: Text(
                                   "Checkout",

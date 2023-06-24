@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/pages/home_page.dart';
 import 'package:meatingless/pages/order_history_page.dart';
@@ -56,13 +57,17 @@ class _MainPageState extends ConsumerState<MainPage> {
           )
         ],
       ),
-      const Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding, vertical: 16),
-            child: AppBottomBar()),
-      )
+      KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
+        return isKeyboardVisible
+            ? Container()
+            : Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: horizontalPadding, vertical: 16),
+                    child: AppBottomBar()),
+              );
+      })
     ]));
   }
 }

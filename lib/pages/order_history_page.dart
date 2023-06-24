@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lottie/lottie.dart';
 import 'package:meatingless/services/order_history.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
@@ -62,6 +61,7 @@ class _OrderHistoryState extends ConsumerState<HistoryPage> {
               ),
               const SizedBox(height: 24),
               ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: items.length,
                   separatorBuilder: (context, index) =>
@@ -85,7 +85,8 @@ class _OrderHistoryState extends ConsumerState<HistoryPage> {
                             "\$${price(wholeHistoryPrice(items.elementAt(index)) + 500)}"),
                       ),
                     );
-                  })
+                  }),
+              const SizedBox(height: 100),
             ]),
     );
   }
