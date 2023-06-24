@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   flutter_floating_bottom_bar: ^1.1.0
   flutter_keyboard_visibility: ^5.4.1
+  flutter_launcher_icons: ^0.13.1
   flutter_riverpod: ^2.3.6
   freezed: ^2.3.5
   freezed_annotation: ^2.2.0
@@ -40,4 +41,10 @@ flutter:
     - lib/assets/images/
     - lib/assets/icons/
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "lib/assets/icon/food_logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  remove_alpha_ios: true
 

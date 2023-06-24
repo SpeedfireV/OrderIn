@@ -10,9 +10,9 @@ const String _directory = "lib/assets/icons/";
 class IngredientsVariables {
   static Map<Ingredients, String> mapOfIngredientsDirectories = {
     Ingredients.mushroom: "${_directory}mushroom.png",
-    Ingredients.extraSoySauce: "${_directory}mushroom.png",
-    Ingredients.chiliFlakes: "${_directory}mushroom.png",
-    Ingredients.kimchi: "${_directory}mushroom.png"
+    Ingredients.extraSoySauce: "${_directory}soy.png",
+    Ingredients.chiliFlakes: "${_directory}chili.png",
+    Ingredients.kimchi: "${_directory}kimchi.png"
   };
   static Map<Ingredients, String> mapOfIngredientsName = {
     Ingredients.mushroom: "Mushroom",

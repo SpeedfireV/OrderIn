@@ -4,6 +4,7 @@ class LocalImages {
   static String vegeBeefBurger = "${_directory}vege-beef-burger.jpg";
   static String nyEarthyPizza = "${_directory}ny-earthy-pizza.jpg";
   static String chineseNoodles = "${_directory}chinese-noodles.jpg";
+  static String baconBurger = "${_directory}bacon-burger.jpg";
 
   // Sets
   static String seaSet = "${_directory}breakfast-set.jpg";

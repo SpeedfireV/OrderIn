@@ -10,7 +10,7 @@ class SortingVariables {
     FilterOptions.noodles: "${_directory}ramen.png",
     FilterOptions.salads: "${_directory}salad.png",
     FilterOptions.drinks: "${_directory}cocktail.png",
-    FilterOptions.special: "${_directory}cocktail.png",
+    FilterOptions.special: "${_directory}special.png",
   };
   static Map<FilterOptions, String> mapOfTitles = {
     FilterOptions.all: "All",

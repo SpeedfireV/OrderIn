@@ -55,6 +55,16 @@ List<FoodItem> allItems = [
       rating: 47,
       numberOfRating: 570,
       favourite: false,
+      ingredients: [defineIngredient(Ingredients.mushroom)]),
+  FoodItem(
+      name: "Cheesy Bacon Burger",
+      description: "So good you will want more!",
+      category: FilterOptions.burgers,
+      price: 1199,
+      mainImage: LocalImages.baconBurger,
+      rating: 45,
+      numberOfRating: 1200,
+      favourite: false,
       ingredients: [defineIngredient(Ingredients.mushroom)])
 ];
 

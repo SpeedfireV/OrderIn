@@ -5,6 +5,7 @@ import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/database.dart';
 import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/services/profile.dart';
+import 'package:meatingless/services/snackbar.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
 import 'package:meatingless/widgets/general/icon_buttons.dart';
@@ -26,6 +27,7 @@ class _OrderPageState extends ConsumerState<OrderPage> {
   Widget build(BuildContext context) {
     Map<FoodItem, int> orders = ref.watch(ordersProvider);
     ProfileDb profile = ref.watch(profileProvider);
+    final snackbar = ref.watch(snackbarProvider.notifier);
     return Scaffold(
       body: Stack(
         children: [
@@ -172,6 +174,38 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                           ref
                                               .read(ordersProvider.notifier)
                                               .resetOrder();
+                                          snackbar.state = true;
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  backgroundColor:
+                                                      AppColors.secondaryColor,
+                                                  duration: const Duration(
+                                                      milliseconds: 3000),
+                                                  behavior:
+                                                      SnackBarBehavior.floating,
+                                                  margin:
+                                                      const EdgeInsets.all(16),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  content: const Padding(
+                                                    padding:
+                                                        EdgeInsets.all(2.0),
+                                                    child: Text(
+                                                      "Thanks For Your Order",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          fontSize: 17),
+                                                    ),
+                                                  )))
+                                              .closed
+                                              .then((value) =>
+                                                  snackbar.state = false);
+
                                           router.pop();
                                         } else {
                                           ScaffoldMessenger.of(context)

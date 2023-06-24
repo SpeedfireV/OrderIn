@@ -6,6 +6,7 @@ import 'package:meatingless/pages/order_history_page.dart';
 import 'package:meatingless/pages/profile_page.dart';
 import 'package:meatingless/services/bottom_app_bar.dart';
 import 'package:meatingless/services/profile.dart';
+import 'package:meatingless/services/snackbar.dart';
 import 'package:meatingless/variables/padding.dart';
 import '../widgets/main_page/bottom_bar.dart';
 
@@ -42,6 +43,7 @@ class _MainPageState extends ConsumerState<MainPage> {
         controller.jumpToPage(next);
       }
     });
+    final snackbar = ref.watch(snackbarProvider);
     return Scaffold(
         body: Stack(children: [
       PageView(
@@ -60,12 +62,26 @@ class _MainPageState extends ConsumerState<MainPage> {
       KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
         return isKeyboardVisible
             ? Container()
-            : const Align(
+            : Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: horizontalPadding, vertical: 16),
-                    child: AppBottomBar()),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AppBottomBar(),
+                        AnimatedContainer(
+                          height: ref.read(snackbarProvider.notifier).state
+                              ? 65
+                              : 5,
+                          duration: Duration(milliseconds: 500),
+                          curve: ref.read(snackbarProvider.notifier).state
+                              ? Curves.ease
+                              : Curves.bounceOut,
+                        )
+                      ],
+                    )),
               );
       })
     ]));
