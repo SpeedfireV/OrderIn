@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/functions/search_filter.dart';
+import 'package:meatingless/services/ingredients.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 
 import '../models/food_item_model.dart';
@@ -203,30 +204,38 @@ class _HomePageState extends ConsumerState<HomePage> {
                       height: 220,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
-                        child: ListView.builder(
-                          itemBuilder: (context, index) => Material(
-                              child: ListTile(
-                            leading: Image(
-                                width: 24,
-                                height: 24,
-                                image: AssetImage(
-                                    SortingVariables.mapOfSortingDirectories[
-                                        searchFilter(searchText, items)
-                                            .elementAt(index)
-                                            .category]!)),
-                            tileColor: AppColors.lightColor,
-                            onTap: () {
-                              ref.read(searchVisible.notifier).state = false;
+                        child: Scrollbar(
+                          thickness: 5,
+                          radius: Radius.circular(30),
+                          child: ListView.builder(
+                            itemBuilder: (context, index) => Material(
+                                child: ListTile(
+                              leading: Image(
+                                  width: 24,
+                                  height: 24,
+                                  image: AssetImage(
+                                      SortingVariables.mapOfSortingDirectories[
+                                          searchFilter(searchText, items)
+                                              .elementAt(index)
+                                              .category]!)),
+                              tileColor: AppColors.lightColor,
+                              onTap: () {
+                                ref.read(searchVisible.notifier).state = false;
+                                currentIngredients =
+                                    searchFilter(searchText, items)
+                                        .elementAt(index)
+                                        .ingredients;
 
-                              router.pushNamed("item",
-                                  extra: searchFilter(searchText, items)
-                                      .elementAt(index));
-                            },
-                            title: Text(searchFilter(searchText, items)
-                                .elementAt(index)
-                                .name),
-                          )),
-                          itemCount: searchFilter(searchText, items).length,
+                                router.pushNamed("item",
+                                    extra: searchFilter(searchText, items)
+                                        .elementAt(index));
+                              },
+                              title: Text(searchFilter(searchText, items)
+                                  .elementAt(index)
+                                  .name),
+                            )),
+                            itemCount: searchFilter(searchText, items).length,
+                          ),
                         ),
                       ),
                     ),

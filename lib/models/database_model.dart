@@ -34,5 +34,3 @@ class ProfileDb {
 
   ProfileDb({required this.name, required this.street, required this.phone});
 }
-
-// @SpeedfireV TODO: Favorite database

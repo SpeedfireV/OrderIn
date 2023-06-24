@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/models/food_item_model.dart';
@@ -6,6 +7,7 @@ import 'package:meatingless/services/functions/db_intepreter.dart';
 class DatabaseServices {
   final historyBox = Hive.box<List>("history");
   final profileBox = Hive.box<ProfileDb>("profile");
+  final favoriteBox = Hive.box<String>("favorite");
 
   void addOrder(List<FoodItem> items, List<int> amount) {
     DateTime date = DateTime.now();
@@ -31,5 +33,18 @@ class DatabaseServices {
 
   void changeProfile(ProfileDb newProfile) {
     profileBox.put(0, newProfile);
+  }
+
+  void addFavorite(String name) {
+    favoriteBox.add(name);
+  }
+
+  void deleteFavorite(String name) {
+    for (int i = 0; i < favoriteBox.values.length; i++) {
+      if (favoriteBox.getAt(i) == name) {
+        favoriteBox.deleteAt(i);
+        break;
+      }
+    }
   }
 }

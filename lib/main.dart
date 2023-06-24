@@ -13,6 +13,7 @@ void main() async {
   Hive.registerAdapter(ProfileDbAdapter());
   await Hive.openBox<List>("history");
   await Hive.openBox<ProfileDb>("profile");
+  await Hive.openBox<String>("favorite");
 
   runApp(const ProviderScope(child: MainApp()));
 }

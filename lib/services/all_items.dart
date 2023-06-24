@@ -1,10 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/food_item_model.dart';
+import 'package:meatingless/services/database.dart';
 
 import '../variables/images.dart';
 import '../variables/ingredients_variables.dart';
 import '../variables/sorting_options.dart';
 import 'functions/define_ingredient.dart';
+import 'functions/initial_favorites.dart';
 
 List<FoodItem> allItems = [
   FoodItem(
@@ -57,7 +59,7 @@ List<FoodItem> allItems = [
 ];
 
 class AllItems extends StateNotifier<List<FoodItem>> {
-  AllItems() : super(allItems);
+  AllItems() : super(initialFavorites(allItems));
 
   void changeFavorite(FoodItem item) {
     int index = -1;
@@ -68,6 +70,11 @@ class AllItems extends StateNotifier<List<FoodItem>> {
       }
     }
     List<FoodItem> newState = state;
+    if (!newState[index].favourite) {
+      DatabaseServices().addFavorite(item.name);
+    } else {
+      DatabaseServices().deleteFavorite(item.name);
+    }
     newState = newState.sublist(0, index) +
         [newState[index].copyWith(favourite: !newState[index].favourite)] +
         newState.sublist(index + 1);
