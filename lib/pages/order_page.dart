@@ -178,19 +178,19 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                               .showSnackBar(SnackBar(
                                                   backgroundColor:
                                                       AppColors.secondaryColor,
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 3000),
                                                   behavior:
                                                       SnackBarBehavior.floating,
-                                                  margin: EdgeInsets.all(16),
+                                                  margin:
+                                                      const EdgeInsets.all(16),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10)),
-                                                  content: Padding(
+                                                  content: const Padding(
                                                     padding:
-                                                        const EdgeInsets.all(
-                                                            2.0),
+                                                        EdgeInsets.all(2.0),
                                                     child: Text(
                                                       "Fill all fields",
                                                       textAlign:

@@ -60,7 +60,7 @@ class _MainPageState extends ConsumerState<MainPage> {
       KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
         return isKeyboardVisible
             ? Container()
-            : Align(
+            : const Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                     padding: EdgeInsets.symmetric(

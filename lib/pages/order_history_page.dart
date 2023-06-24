@@ -61,7 +61,7 @@ class _OrderHistoryState extends ConsumerState<HistoryPage> {
               ),
               const SizedBox(height: 24),
               ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: items.length,
                   separatorBuilder: (context, index) =>

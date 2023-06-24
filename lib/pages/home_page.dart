@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/services/functions/search_filter.dart';
-import 'package:meatingless/variables/images.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 
 import '../models/food_item_model.dart';
@@ -166,7 +165,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const ElementTitle(title: "Special Of The Day"),
+                              ElementTitle(title: "Special Of The Day"),
                             ],
                           ),
                         ),

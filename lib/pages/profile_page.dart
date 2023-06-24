@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/services/profile.dart';
 import 'package:meatingless/variables/padding.dart';
-import 'package:meatingless/widgets/general/element_title.dart';
 import 'package:meatingless/widgets/general/icon_buttons.dart';
 
 import '../routing/router.dart';
@@ -52,7 +51,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               children: [
                 widget.needed == true
                     ? Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: horizontalPadding,
                         ),
                         child: Stack(
@@ -70,8 +69,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                     }),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 28.0),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 28.0),
                               child: Align(
                                   alignment: Alignment.center,
                                   child: Text(
@@ -152,7 +151,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         border: OutlineInputBorder()),
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 widget.needed == true
                     ? Padding(
                         padding: const EdgeInsets.symmetric(
