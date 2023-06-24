@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/models/food_item_model.dart';

@@ -65,17 +65,17 @@ class _MainPageState extends ConsumerState<MainPage> {
             : Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                         horizontal: horizontalPadding, vertical: 16),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        AppBottomBar(),
+                        const AppBottomBar(),
                         AnimatedContainer(
                           height: ref.read(snackbarProvider.notifier).state
                               ? 65
                               : 5,
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           curve: ref.read(snackbarProvider.notifier).state
                               ? Curves.ease
                               : Curves.bounceOut,
