@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/database.dart';
 import 'package:meatingless/variables/colors.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
-  await Hive.initFlutter();
-
-  Hive.registerAdapter(FoodItemDbAdapter());
-  Hive.registerAdapter(ProfileDbAdapter());
-  await Hive.openBox<List>("history");
-  await Hive.openBox<ProfileDb>("profile");
-  await Hive.openBox<String>("favorite");
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await initDatabase();
 
   runApp(const ProviderScope(child: MainApp()));
 }

@@ -1,4 +1,21 @@
-enum FilterOptions { all, burgers, pizza, salads, noodles, drinks, special }
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+enum FilterOptions {
+  @JsonValue("all")
+  all,
+  @JsonValue("burgers")
+  burgers,
+  @JsonValue("pizza")
+  pizza,
+  @JsonValue("salads")
+  salads,
+  @JsonValue("noodles")
+  noodles,
+  @JsonValue("drinks")
+  drinks,
+  @JsonValue("special")
+  special
+}
 
 List listSortingOptions() {
   List list = [];

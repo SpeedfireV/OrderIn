@@ -16,7 +16,31 @@ class ProfileNotifier extends StateNotifier<ProfileDb> {
     state = newProfile;
     debugPrint(state.name);
   }
+
+  bool dataVerification() {
+    if (nameVerification() && streetVerification() && phoneVerification()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool nameVerification() {
+    return state.name.isNotEmpty;
+  }
+
+  bool streetVerification() {
+    return state.street.isNotEmpty;
+  }
+
+  bool phoneVerification() {
+    return state.phone.length == 9;
+  }
 }
 
 final profileProvider = StateNotifierProvider<ProfileNotifier, ProfileDb>(
     (ref) => ProfileNotifier());
+
+final profileChangedProvider = StateProvider<bool>((ref) {
+  return false;
+});

@@ -29,6 +29,14 @@ class _OrderHistoryState extends ConsumerState<HistoryPage> {
                   horizontal: horizontalPadding, vertical: 24),
               child: Column(
                 children: [
+                  const Text(
+                    "Order History",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -45,7 +53,7 @@ class _OrderHistoryState extends ConsumerState<HistoryPage> {
                           .read(bottomAppBarPositionProvider.notifier)
                           .changePosition(1);
                     },
-                    label: const Text("Add Some Food"),
+                    label: const Text("Order Some Food"),
                     icon: const Icon(Icons.add),
                   )
                 ],

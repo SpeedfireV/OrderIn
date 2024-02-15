@@ -1,7 +1,13 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 enum Ingredients {
+  @JsonValue("mushroom")
   mushroom,
+  @JsonValue("extra_soy_sauce")
   extraSoySauce,
+  @JsonValue("chili_flakes")
   chiliFlakes,
+  @JsonValue("kimchi")
   kimchi,
 }
 

@@ -9,6 +9,7 @@ import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
 import 'package:meatingless/variables/sorting_variables.dart';
 import 'package:meatingless/widgets/general/element_title.dart';
+import 'package:meatingless/widgets/general/submit_button.dart';
 import 'package:meatingless/widgets/item_page/ingredient_selector.dart';
 import 'package:meatingless/widgets/item_page/price_dialog.dart';
 import 'package:meatingless/widgets/general/icon_buttons.dart';
@@ -175,25 +176,12 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(0, 56)),
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColors.mainColor)),
-                      child: Text(
-                        "Add To Order",
-                        style: TextStyle(
-                            color: AppColors.lightColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16),
-                      ),
-                      onPressed: () {
-                        router.pop();
-                        addToCart(item, ref, ingredients);
-                      },
-                    ),
-                  ),
+                      child: SubmitButton(
+                          function: () {
+                            router.pop();
+                            addToCart(item, ref, ingredients);
+                          },
+                          text: "Add To Order")),
                 ],
               ),
             ),

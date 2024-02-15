@@ -3,6 +3,16 @@ import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/models/food_item_model.dart';
 import 'package:meatingless/services/functions/db_intepreter.dart';
 
+Future initDatabase() async {
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(FoodItemDbAdapter());
+  Hive.registerAdapter(ProfileDbAdapter());
+  await Hive.openBox<List>("history");
+  await Hive.openBox<ProfileDb>("profile");
+  await Hive.openBox<String>("favorite");
+}
+
 class DatabaseServices {
   final historyBox = Hive.box<List>("history");
   final profileBox = Hive.box<ProfileDb>("profile");
