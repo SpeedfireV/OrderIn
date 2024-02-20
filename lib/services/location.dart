@@ -35,6 +35,6 @@ class LocationServices {
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
     log(placemarks.toString());
-    return placemarks;
+    return placemarks[0].street;
   }
 }

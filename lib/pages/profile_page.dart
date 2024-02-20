@@ -149,8 +149,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                 Position? position = await LocationServices()
                                     .getCurrentLocation();
                                 if (position != null) {
-                                  await LocationServices()
+                                  String street = await LocationServices()
                                       .AddressByCoordinates(position);
+                                  streetController.text = street;
                                 }
                               },
                               icon: Icon(
