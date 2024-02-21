@@ -189,31 +189,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  widget.needed == true
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: horizontalPadding),
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                                minimumSize:
-                                    const MaterialStatePropertyAll(Size(0, 56)),
-                                backgroundColor: MaterialStatePropertyAll(
-                                    AppColors.mainColor)),
-                            onPressed: () {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              router.pop();
-                            },
-                            child: Text(
-                              "Apply Changes",
-                              style: TextStyle(
-                                  color: AppColors.lightColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                            ),
-                          ),
-                        )
-                      : Container(),
                   profileChanged
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -236,6 +211,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                             .read(
                                                 profileChangedProvider.notifier)
                                             .state = false;
+                                        if (widget.needed == true) {
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                          router.pop();
+                                        }
                                       }
                                     },
                                     text: "Apply Changes"))

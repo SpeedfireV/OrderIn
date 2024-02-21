@@ -13,6 +13,7 @@ dependencies:
   firebase_core: ^2.24.2
   flutter:
     sdk: flutter
+  flutter_dotenv: ^5.1.0
   flutter_floating_bottom_bar: ^1.1.0
   flutter_hooks: ^0.20.5
   flutter_keyboard_visibility: ^5.4.1
@@ -46,6 +47,7 @@ flutter:
   assets:
     - lib/assets/images/
     - lib/assets/icons/
+    - api.env
 
 flutter_launcher_icons:
   android: "launcher_icon"

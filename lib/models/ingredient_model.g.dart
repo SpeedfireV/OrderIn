@@ -6,13 +6,13 @@ part of 'ingredient_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Ingredient _$$_IngredientFromJson(Map<String, dynamic> json) =>
-    _$_Ingredient(
+_$IngredientImpl _$$IngredientImplFromJson(Map<String, dynamic> json) =>
+    _$IngredientImpl(
       ingredientEnum: $enumDecode(_$IngredientsEnumMap, json['ingredientEnum']),
       active: json['active'] as bool,
     );
 
-Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
+Map<String, dynamic> _$$IngredientImplToJson(_$IngredientImpl instance) =>
     <String, dynamic>{
       'ingredientEnum': _$IngredientsEnumMap[instance.ingredientEnum]!,
       'active': instance.active,

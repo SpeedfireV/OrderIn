@@ -12,7 +12,7 @@ part of 'firestore_models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OrderFirestore _$OrderFirestoreFromJson(Map<String, dynamic> json) {
   return _OrderFirestore.fromJson(json);
@@ -126,11 +126,11 @@ class _$OrderFirestoreCopyWithImpl<$Res, $Val extends OrderFirestore>
 }
 
 /// @nodoc
-abstract class _$$_OrderFirestoreCopyWith<$Res>
+abstract class _$$OrderFirestoreImplCopyWith<$Res>
     implements $OrderFirestoreCopyWith<$Res> {
-  factory _$$_OrderFirestoreCopyWith(
-          _$_OrderFirestore value, $Res Function(_$_OrderFirestore) then) =
-      __$$_OrderFirestoreCopyWithImpl<$Res>;
+  factory _$$OrderFirestoreImplCopyWith(_$OrderFirestoreImpl value,
+          $Res Function(_$OrderFirestoreImpl) then) =
+      __$$OrderFirestoreImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -147,11 +147,11 @@ abstract class _$$_OrderFirestoreCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderFirestoreCopyWithImpl<$Res>
-    extends _$OrderFirestoreCopyWithImpl<$Res, _$_OrderFirestore>
-    implements _$$_OrderFirestoreCopyWith<$Res> {
-  __$$_OrderFirestoreCopyWithImpl(
-      _$_OrderFirestore _value, $Res Function(_$_OrderFirestore) _then)
+class __$$OrderFirestoreImplCopyWithImpl<$Res>
+    extends _$OrderFirestoreCopyWithImpl<$Res, _$OrderFirestoreImpl>
+    implements _$$OrderFirestoreImplCopyWith<$Res> {
+  __$$OrderFirestoreImplCopyWithImpl(
+      _$OrderFirestoreImpl _value, $Res Function(_$OrderFirestoreImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -168,7 +168,7 @@ class __$$_OrderFirestoreCopyWithImpl<$Res>
     Object? ingredients = null,
     Object? amount = freezed,
   }) {
-    return _then(_$_OrderFirestore(
+    return _then(_$OrderFirestoreImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -215,10 +215,10 @@ class __$$_OrderFirestoreCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderFirestore
+class _$OrderFirestoreImpl
     with DiagnosticableTreeMixin
     implements _OrderFirestore {
-  const _$_OrderFirestore(
+  const _$OrderFirestoreImpl(
       {required this.name,
       required this.description,
       required this.category,
@@ -231,8 +231,8 @@ class _$_OrderFirestore
       this.amount})
       : _ingredients = ingredients;
 
-  factory _$_OrderFirestore.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderFirestoreFromJson(json);
+  factory _$OrderFirestoreImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderFirestoreImplFromJson(json);
 
   @override
   final String name;
@@ -284,10 +284,10 @@ class _$_OrderFirestore
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderFirestore &&
+            other is _$OrderFirestoreImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -324,12 +324,13 @@ class _$_OrderFirestore
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderFirestoreCopyWith<_$_OrderFirestore> get copyWith =>
-      __$$_OrderFirestoreCopyWithImpl<_$_OrderFirestore>(this, _$identity);
+  _$$OrderFirestoreImplCopyWith<_$OrderFirestoreImpl> get copyWith =>
+      __$$OrderFirestoreImplCopyWithImpl<_$OrderFirestoreImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderFirestoreToJson(
+    return _$$OrderFirestoreImplToJson(
       this,
     );
   }
@@ -346,10 +347,10 @@ abstract class _OrderFirestore implements OrderFirestore {
       required final int numberOfRating,
       required final bool favourite,
       required final List<Ingredients> ingredients,
-      final int? amount}) = _$_OrderFirestore;
+      final int? amount}) = _$OrderFirestoreImpl;
 
   factory _OrderFirestore.fromJson(Map<String, dynamic> json) =
-      _$_OrderFirestore.fromJson;
+      _$OrderFirestoreImpl.fromJson;
 
   @override
   String get name;
@@ -373,6 +374,6 @@ abstract class _OrderFirestore implements OrderFirestore {
   int? get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderFirestoreCopyWith<_$_OrderFirestore> get copyWith =>
+  _$$OrderFirestoreImplCopyWith<_$OrderFirestoreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

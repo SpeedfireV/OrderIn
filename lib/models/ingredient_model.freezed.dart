@@ -12,7 +12,7 @@ part of 'ingredient_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
   return _Ingredient.fromJson(json);
@@ -68,22 +68,22 @@ class _$IngredientCopyWithImpl<$Res, $Val extends Ingredient>
 }
 
 /// @nodoc
-abstract class _$$_IngredientCopyWith<$Res>
+abstract class _$$IngredientImplCopyWith<$Res>
     implements $IngredientCopyWith<$Res> {
-  factory _$$_IngredientCopyWith(
-          _$_Ingredient value, $Res Function(_$_Ingredient) then) =
-      __$$_IngredientCopyWithImpl<$Res>;
+  factory _$$IngredientImplCopyWith(
+          _$IngredientImpl value, $Res Function(_$IngredientImpl) then) =
+      __$$IngredientImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Ingredients ingredientEnum, bool active});
 }
 
 /// @nodoc
-class __$$_IngredientCopyWithImpl<$Res>
-    extends _$IngredientCopyWithImpl<$Res, _$_Ingredient>
-    implements _$$_IngredientCopyWith<$Res> {
-  __$$_IngredientCopyWithImpl(
-      _$_Ingredient _value, $Res Function(_$_Ingredient) _then)
+class __$$IngredientImplCopyWithImpl<$Res>
+    extends _$IngredientCopyWithImpl<$Res, _$IngredientImpl>
+    implements _$$IngredientImplCopyWith<$Res> {
+  __$$IngredientImplCopyWithImpl(
+      _$IngredientImpl _value, $Res Function(_$IngredientImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_IngredientCopyWithImpl<$Res>
     Object? ingredientEnum = null,
     Object? active = null,
   }) {
-    return _then(_$_Ingredient(
+    return _then(_$IngredientImpl(
       ingredientEnum: null == ingredientEnum
           ? _value.ingredientEnum
           : ingredientEnum // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_IngredientCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
-  const _$_Ingredient({required this.ingredientEnum, required this.active});
+class _$IngredientImpl with DiagnosticableTreeMixin implements _Ingredient {
+  const _$IngredientImpl({required this.ingredientEnum, required this.active});
 
-  factory _$_Ingredient.fromJson(Map<String, dynamic> json) =>
-      _$$_IngredientFromJson(json);
+  factory _$IngredientImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IngredientImplFromJson(json);
 
   @override
   final Ingredients ingredientEnum;
@@ -133,10 +133,10 @@ class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Ingredient &&
+            other is _$IngredientImpl &&
             (identical(other.ingredientEnum, ingredientEnum) ||
                 other.ingredientEnum == ingredientEnum) &&
             (identical(other.active, active) || other.active == active));
@@ -149,12 +149,12 @@ class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IngredientCopyWith<_$_Ingredient> get copyWith =>
-      __$$_IngredientCopyWithImpl<_$_Ingredient>(this, _$identity);
+  _$$IngredientImplCopyWith<_$IngredientImpl> get copyWith =>
+      __$$IngredientImplCopyWithImpl<_$IngredientImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IngredientToJson(
+    return _$$IngredientImplToJson(
       this,
     );
   }
@@ -163,10 +163,10 @@ class _$_Ingredient with DiagnosticableTreeMixin implements _Ingredient {
 abstract class _Ingredient implements Ingredient {
   const factory _Ingredient(
       {required final Ingredients ingredientEnum,
-      required final bool active}) = _$_Ingredient;
+      required final bool active}) = _$IngredientImpl;
 
   factory _Ingredient.fromJson(Map<String, dynamic> json) =
-      _$_Ingredient.fromJson;
+      _$IngredientImpl.fromJson;
 
   @override
   Ingredients get ingredientEnum;
@@ -174,6 +174,6 @@ abstract class _Ingredient implements Ingredient {
   bool get active;
   @override
   @JsonKey(ignore: true)
-  _$$_IngredientCopyWith<_$_Ingredient> get copyWith =>
+  _$$IngredientImplCopyWith<_$IngredientImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

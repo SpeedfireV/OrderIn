@@ -6,8 +6,8 @@ part of 'firestore_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderFirestore _$$_OrderFirestoreFromJson(Map<String, dynamic> json) =>
-    _$_OrderFirestore(
+_$OrderFirestoreImpl _$$OrderFirestoreImplFromJson(Map<String, dynamic> json) =>
+    _$OrderFirestoreImpl(
       name: json['name'] as String,
       description: json['description'] as String,
       category: $enumDecode(_$FilterOptionsEnumMap, json['category']),
@@ -22,7 +22,8 @@ _$_OrderFirestore _$$_OrderFirestoreFromJson(Map<String, dynamic> json) =>
       amount: json['amount'] as int?,
     );
 
-Map<String, dynamic> _$$_OrderFirestoreToJson(_$_OrderFirestore instance) =>
+Map<String, dynamic> _$$OrderFirestoreImplToJson(
+        _$OrderFirestoreImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

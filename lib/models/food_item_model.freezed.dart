@@ -12,7 +12,7 @@ part of 'food_item_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FoodItem _$FoodItemFromJson(Map<String, dynamic> json) {
   return _FoodItem.fromJson(json);
@@ -125,10 +125,11 @@ class _$FoodItemCopyWithImpl<$Res, $Val extends FoodItem>
 }
 
 /// @nodoc
-abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
-  factory _$$_FoodItemCopyWith(
-          _$_FoodItem value, $Res Function(_$_FoodItem) then) =
-      __$$_FoodItemCopyWithImpl<$Res>;
+abstract class _$$FoodItemImplCopyWith<$Res>
+    implements $FoodItemCopyWith<$Res> {
+  factory _$$FoodItemImplCopyWith(
+          _$FoodItemImpl value, $Res Function(_$FoodItemImpl) then) =
+      __$$FoodItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -145,11 +146,11 @@ abstract class _$$_FoodItemCopyWith<$Res> implements $FoodItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FoodItemCopyWithImpl<$Res>
-    extends _$FoodItemCopyWithImpl<$Res, _$_FoodItem>
-    implements _$$_FoodItemCopyWith<$Res> {
-  __$$_FoodItemCopyWithImpl(
-      _$_FoodItem _value, $Res Function(_$_FoodItem) _then)
+class __$$FoodItemImplCopyWithImpl<$Res>
+    extends _$FoodItemCopyWithImpl<$Res, _$FoodItemImpl>
+    implements _$$FoodItemImplCopyWith<$Res> {
+  __$$FoodItemImplCopyWithImpl(
+      _$FoodItemImpl _value, $Res Function(_$FoodItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -166,7 +167,7 @@ class __$$_FoodItemCopyWithImpl<$Res>
     Object? ingredients = null,
     Object? amount = freezed,
   }) {
-    return _then(_$_FoodItem(
+    return _then(_$FoodItemImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -213,8 +214,8 @@ class __$$_FoodItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
-  const _$_FoodItem(
+class _$FoodItemImpl with DiagnosticableTreeMixin implements _FoodItem {
+  const _$FoodItemImpl(
       {required this.name,
       required this.description,
       required this.category,
@@ -227,8 +228,8 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
       this.amount})
       : _ingredients = ingredients;
 
-  factory _$_FoodItem.fromJson(Map<String, dynamic> json) =>
-      _$$_FoodItemFromJson(json);
+  factory _$FoodItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FoodItemImplFromJson(json);
 
   @override
   final String name;
@@ -280,10 +281,10 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FoodItem &&
+            other is _$FoodItemImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -320,12 +321,12 @@ class _$_FoodItem with DiagnosticableTreeMixin implements _FoodItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FoodItemCopyWith<_$_FoodItem> get copyWith =>
-      __$$_FoodItemCopyWithImpl<_$_FoodItem>(this, _$identity);
+  _$$FoodItemImplCopyWith<_$FoodItemImpl> get copyWith =>
+      __$$FoodItemImplCopyWithImpl<_$FoodItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FoodItemToJson(
+    return _$$FoodItemImplToJson(
       this,
     );
   }
@@ -342,9 +343,10 @@ abstract class _FoodItem implements FoodItem {
       required final int numberOfRating,
       required final bool favourite,
       required final List<Ingredient> ingredients,
-      final int? amount}) = _$_FoodItem;
+      final int? amount}) = _$FoodItemImpl;
 
-  factory _FoodItem.fromJson(Map<String, dynamic> json) = _$_FoodItem.fromJson;
+  factory _FoodItem.fromJson(Map<String, dynamic> json) =
+      _$FoodItemImpl.fromJson;
 
   @override
   String get name;
@@ -368,6 +370,6 @@ abstract class _FoodItem implements FoodItem {
   int? get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_FoodItemCopyWith<_$_FoodItem> get copyWith =>
+  _$$FoodItemImplCopyWith<_$FoodItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

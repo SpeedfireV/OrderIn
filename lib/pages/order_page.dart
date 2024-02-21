@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meatingless/models/database_model.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/api/firestore.dart';
 import 'package:meatingless/services/database.dart';
 import 'package:meatingless/services/orders.dart';
 import 'package:meatingless/services/profile.dart';
@@ -171,6 +172,7 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                           DatabaseServices().addOrder(
                                               orders.keys.toList(),
                                               orders.values.toList());
+                                          FirestoreServices().addOrder(orders);
                                           ref
                                               .read(ordersProvider.notifier)
                                               .resetOrder();

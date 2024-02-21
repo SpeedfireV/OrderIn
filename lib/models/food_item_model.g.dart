@@ -6,7 +6,8 @@ part of 'food_item_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FoodItem _$$_FoodItemFromJson(Map<String, dynamic> json) => _$_FoodItem(
+_$FoodItemImpl _$$FoodItemImplFromJson(Map<String, dynamic> json) =>
+    _$FoodItemImpl(
       name: json['name'] as String,
       description: json['description'] as String,
       category: $enumDecode(_$FilterOptionsEnumMap, json['category']),
@@ -21,7 +22,7 @@ _$_FoodItem _$$_FoodItemFromJson(Map<String, dynamic> json) => _$_FoodItem(
       amount: json['amount'] as int?,
     );
 
-Map<String, dynamic> _$$_FoodItemToJson(_$_FoodItem instance) =>
+Map<String, dynamic> _$$FoodItemImplToJson(_$FoodItemImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
