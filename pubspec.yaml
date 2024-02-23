@@ -47,7 +47,7 @@ flutter:
   assets:
     - lib/assets/images/
     - lib/assets/icons/
-    - api.env
+    - .env
 
 flutter_launcher_icons:
   android: "launcher_icon"

@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
   }
 
   static FirebaseOptions android = FirebaseOptions(
-    apiKey: DotEnv().env['FIRESTORE_API_KEY']!,
+    apiKey: dotenv.env['FIRESTORE_API_KEY']!,
     appId: '1:474778682867:android:9ddce4a1db26791d7ebe86',
     messagingSenderId: '474778682867',
     projectId: 'order-in-d91f0',
