@@ -40,16 +40,77 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     final profile = ref.watch(profileProvider);
     final profileChanged = ref.watch(profileChangedProvider);
 
+    Future _showLocationDialog({required Function function}) async {
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Access To Location"),
+            content: Text(
+                "You have to give us access to determine your location in your settings."),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    router.pop();
+                  },
+                  child: Text("Cancel")),
+              TextButton(
+                  onPressed: () async {
+                    router.pop();
+                    await function.call();
+                  },
+                  child: Text("Ok"))
+            ],
+          );
+        },
+      );
+    }
+
+    Future _showDeniedLocationDialog() async {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("We Do Not Have Access To Your Location"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    router.pop();
+                  },
+                  child: Text("Ok"))
+            ],
+          );
+        },
+      );
+    }
+
     Future _locateUser() async {
-      late Position location;
+      Position? location;
 
       if (await LocationServices.checkLocationAvailability()) {
         LocationPermission locationPermission =
-            await LocationServices.getLocationPermission();
+            await LocationServices.checkPermission();
         if (locationPermission == LocationPermission.whileInUse ||
             locationPermission == LocationPermission.always) {
           location = await LocationServices.getCurrentPosition();
-        } else {}
+        } else {
+          locationPermission = await LocationServices.requestPermission();
+          if (locationPermission == LocationPermission.always ||
+              locationPermission == LocationPermission.whileInUse) {
+            location = await LocationServices.getCurrentPosition();
+          } else {
+            await _showLocationDialog(function: () async {
+              (await LocationServices.navigateToLocationSettings());
+              locationPermission = await LocationServices.checkPermission();
+              if (locationPermission == LocationPermission.always ||
+                  locationPermission == LocationPermission.whileInUse) {
+                location = await LocationServices.getCurrentPosition();
+              } else {
+                await _showDeniedLocationDialog();
+              }
+            });
+          }
+        }
       }
       return location;
     }
@@ -160,13 +221,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                               : "Street Address Needed",
                           suffixIcon: IconButton(
                               onPressed: () async {
-                                Position? position = await LocationServices()
-                                    .getCurrentLocation();
-                                if (position != null) {
-                                  String street = await LocationServices()
-                                      .AddressByCoordinates(position);
-                                  streetController.text = street;
-                                }
+                                await _locateUser();
                               },
                               icon: Icon(
                                 Icons.my_location,

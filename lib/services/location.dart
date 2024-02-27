@@ -8,21 +8,21 @@ class LocationServices {
     return await Geolocator.isLocationServiceEnabled();
   }
 
-  static Future<LocationPermission> getLocationPermission() async {
+  static Future<LocationPermission> checkPermission() async {
     return await Geolocator.checkPermission();
   }
 
-  static Future requestPermission() async {
+  static Future<LocationPermission> requestPermission() async {
     return await Geolocator.requestPermission();
   }
 
-  static Future getCurrentPosition() async {
+  static Future<Position> getCurrentPosition() async {
     return await Geolocator.getCurrentPosition();
   }
 
   static Future<Position?> getCurrentLocation() async {
     bool isLocationServiceEnabled = await checkLocationAvailability();
-    LocationPermission permission = await getLocationPermission();
+    LocationPermission permission = await checkPermission();
     if (isLocationServiceEnabled &&
         (permission == LocationPermission.whileInUse ||
             permission == LocationPermission.always)) {
@@ -43,8 +43,9 @@ class LocationServices {
     }
   }
 
-  static Future navigateToLocationSettings() async {
+  static Future<bool> navigateToLocationSettings() async {
     await Geolocator.openLocationSettings();
+    return true;
   }
 
   static Future AddressByCoordinates(Position position) async {
