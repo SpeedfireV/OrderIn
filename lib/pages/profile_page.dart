@@ -40,6 +40,20 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     final profile = ref.watch(profileProvider);
     final profileChanged = ref.watch(profileChangedProvider);
 
+    Future _locateUser() async {
+      late Position location;
+
+      if (await LocationServices.checkLocationAvailability()) {
+        LocationPermission locationPermission =
+            await LocationServices.getLocationPermission();
+        if (locationPermission == LocationPermission.whileInUse ||
+            locationPermission == LocationPermission.always) {
+          location = await LocationServices.getCurrentPosition();
+        } else {}
+      }
+      return location;
+    }
+
     return KeyboardDismissOnTap(
       dismissOnCapturedTaps: true,
       child: Scaffold(

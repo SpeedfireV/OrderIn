@@ -4,9 +4,25 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationServices {
-  Future<Position?> getCurrentLocation() async {
-    bool isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
-    LocationPermission permission = await Geolocator.checkPermission();
+  static Future<bool> checkLocationAvailability() async {
+    return await Geolocator.isLocationServiceEnabled();
+  }
+
+  static Future<LocationPermission> getLocationPermission() async {
+    return await Geolocator.checkPermission();
+  }
+
+  static Future requestPermission() async {
+    return await Geolocator.requestPermission();
+  }
+
+  static Future getCurrentPosition() async {
+    return await Geolocator.getCurrentPosition();
+  }
+
+  static Future<Position?> getCurrentLocation() async {
+    bool isLocationServiceEnabled = await checkLocationAvailability();
+    LocationPermission permission = await getLocationPermission();
     if (isLocationServiceEnabled &&
         (permission == LocationPermission.whileInUse ||
             permission == LocationPermission.always)) {
@@ -22,16 +38,16 @@ class LocationServices {
         log(location.toString());
         return location;
       }
-      navigateToLocationSettings();
+      await navigateToLocationSettings();
       log("User didn't give access to location.");
     }
   }
 
-  Future navigateToLocationSettings() async {
+  static Future navigateToLocationSettings() async {
     await Geolocator.openLocationSettings();
   }
 
-  Future AddressByCoordinates(Position position) async {
+  static Future AddressByCoordinates(Position position) async {
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
     log(placemarks.toString());
