@@ -205,10 +205,10 @@ packages:
     dependency: transitive
     description:
       name: collection
-      sha256: "4a07be6cb69c84d677a6c3096fcf960cc3285a8330b4603e0d463d15d9bd934c"
+      sha256: ee67cb0715911d28db6bf4af1026078bd6f0128b07a5f66fb2ed94ec6783c09a
       url: "https://pub.dev"
     source: hosted
-    version: "1.17.1"
+    version: "1.18.0"
   convert:
     dependency: transitive
     description:
@@ -512,6 +512,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.2"
+  get_it:
+    dependency: transitive
+    description:
+      name: get_it
+      sha256: e6017ce7fdeaf218dc51a100344d8cb70134b80e28b760f8bb23c242437bafd7
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.6.7"
   glob:
     dependency: transitive
     description:
@@ -580,10 +588,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
+      sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   http_multi_server:
     dependency: transitive
     description:
@@ -608,6 +616,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.7"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   io:
     dependency: transitive
     description:
@@ -640,6 +656,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.7.1"
+  leak_tracker:
+    dependency: transitive
+    description:
+      name: leak_tracker
+      sha256: "78eb209deea09858f5269f5a5b02be4049535f568c07b275096836f01ea323fa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.0.0"
+  leak_tracker_flutter_testing:
+    dependency: transitive
+    description:
+      name: leak_tracker_flutter_testing
+      sha256: b46c5e37c19120a8a01918cfaf293547f47269f7cb4b0058f21531c2465d6ef0
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
+  leak_tracker_testing:
+    dependency: transitive
+    description:
+      name: leak_tracker_testing
+      sha256: a597f72a664dbd293f3bfc51f9ba69816f84dcd403cdac7066cb3f6003f3ab47
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   lints:
     dependency: transitive
     description:
@@ -668,26 +708,26 @@ packages:
     dependency: transitive
     description:
       name: matcher
-      sha256: "6501fbd55da300384b768785b83e5ce66991266cec21af89ab9ae7f5ce1c4cbb"
+      sha256: d2323aa2060500f906aa31a895b4030b6da3ebdcc5619d14ce1aada65cd161cb
       url: "https://pub.dev"
     source: hosted
-    version: "0.12.15"
+    version: "0.12.16+1"
   material_color_utilities:
     dependency: transitive
     description:
       name: material_color_utilities
-      sha256: d92141dc6fe1dad30722f9aa826c7fbc896d021d792f80678280601aff8cf724
+      sha256: "0e0a020085b65b6083975e499759762399b4475f766c21668c4ecca34ea74e5a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.8.0"
   meta:
     dependency: transitive
     description:
       name: meta
-      sha256: "3c74dbf8763d36539f114c799d8a2d87343b5067e9d796ca22b5eb8437090ee3"
+      sha256: d584fa6707a52763a52446f02cc621b077888fb63b93bbcb1143a7be5a0c0c04
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.1"
+    version: "1.11.0"
   mime:
     dependency: transitive
     description:
@@ -696,6 +736,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   numeral:
     dependency: "direct main"
     description:
@@ -716,10 +764,10 @@ packages:
     dependency: transitive
     description:
       name: path
-      sha256: "8829d8a55c13fc0e37127c29fedf290c102f4e40ae94ada574091fe0ff96c917"
+      sha256: "087ce49c3f0dc39180befefc60fdb4acd8f8620e5682fe2476afd0b3688bb4af"
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.3"
+    version: "1.9.0"
   path_provider:
     dependency: transitive
     description:
@@ -768,6 +816,159 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  payu:
+    dependency: "direct main"
+    description:
+      path: payu
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_add_card:
+    dependency: transitive
+    description:
+      path: payu_add_card
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_api:
+    dependency: transitive
+    description:
+      path: payu_api
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_core:
+    dependency: transitive
+    description:
+      path: payu_core
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_interface:
+    dependency: transitive
+    description:
+      path: payu_interface
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_mastercard_installments:
+    dependency: transitive
+    description:
+      path: payu_mastercard_installments
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_mobile_payments:
+    dependency: transitive
+    description:
+      path: "payu_mobile_payments/payu_mobile_payments"
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_mobile_payments_android:
+    dependency: transitive
+    description:
+      path: "payu_mobile_payments/payu_mobile_payments_android"
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.1"
+  payu_mobile_payments_ios:
+    dependency: transitive
+    description:
+      path: "payu_mobile_payments/payu_mobile_payments_ios"
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.1"
+  payu_mobile_payments_platform_interface:
+    dependency: transitive
+    description:
+      path: "payu_mobile_payments/payu_mobile_payments_platform_interface"
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.1"
+  payu_payment_methods:
+    dependency: transitive
+    description:
+      path: payu_payment_methods
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_state_management:
+    dependency: transitive
+    description:
+      path: payu_state_management
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_terms_and_conditions:
+    dependency: transitive
+    description:
+      path: payu_terms_and_conditions
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_three_ds:
+    dependency: transitive
+    description:
+      path: payu_three_ds
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_translations:
+    dependency: transitive
+    description:
+      path: payu_translations
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_ui:
+    dependency: transitive
+    description:
+      path: payu_ui
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
+  payu_web_payments:
+    dependency: transitive
+    description:
+      path: payu_web_payments
+      ref: HEAD
+      resolved-ref: f3e425edf89e3648031def44655ec2362c5c9201
+      url: "https://github.com/PayU-EMEA/PayU-Flutter.git"
+    source: git
+    version: "1.0.2"
   petitparser:
     dependency: transitive
     description:
@@ -808,6 +1009,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  provider:
+    dependency: transitive
+    description:
+      name: provider
+      sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.2"
   pub_semver:
     dependency: transitive
     description:
@@ -873,10 +1082,10 @@ packages:
     dependency: transitive
     description:
       name: source_span
-      sha256: dd904f795d4b4f3b870833847c461801f6750a9fa8e61ea5ac53f9422b31f250
+      sha256: "53e943d4206a5e30df338fd4c6e7a077e02254531b138a15aec3bd143c1a8b3c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.1"
+    version: "1.10.0"
   sprintf:
     dependency: transitive
     description:
@@ -889,10 +1098,10 @@ packages:
     dependency: transitive
     description:
       name: stack_trace
-      sha256: c3c7d8edb15bee7f0f74debd4b9c5f3c2ea86766fe4178eb2a18eb30a0bdaed5
+      sha256: "73713990125a6d93122541237550ee3352a2d84baad52d375a4cad2eb9b7ce0b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   state_notifier:
     dependency: transitive
     description:
@@ -905,10 +1114,10 @@ packages:
     dependency: transitive
     description:
       name: stream_channel
-      sha256: "83615bee9045c1d322bbbd1ba209b7a749c2cbcdcb3fdd1df8eb488b3279c1c8"
+      sha256: ba2aa5d8cc609d96bbb2899c28934f9e1af5cddbd60a827822ea467161eb54e7
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   stream_transform:
     dependency: transitive
     description:
@@ -961,10 +1170,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: eb6ac1540b26de412b3403a163d919ba86f6a973fe6cc50ae3541b80092fdcfb
+      sha256: "5c2f730018264d276c20e4f1503fd1308dfbbae39ec8ee63c5236311ac06954b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.1"
+    version: "0.6.1"
   timing:
     dependency: transitive
     description:
@@ -981,6 +1190,70 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  url_launcher:
+    dependency: transitive
+    description:
+      name: url_launcher
+      sha256: "0ecc004c62fd3ed36a2ffcbe0dd9700aee63bd7532d0b642a488b1ec310f492e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.5"
+  url_launcher_android:
+    dependency: transitive
+    description:
+      name: url_launcher_android
+      sha256: d4ed0711849dd8e33eb2dd69c25db0d0d3fdc37e0a62e629fe32f57a22db2745
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
+  url_launcher_ios:
+    dependency: transitive
+    description:
+      name: url_launcher_ios
+      sha256: "9149d493b075ed740901f3ee844a38a00b33116c7c5c10d7fb27df8987fb51d5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.5"
+  url_launcher_linux:
+    dependency: transitive
+    description:
+      name: url_launcher_linux
+      sha256: ab360eb661f8879369acac07b6bb3ff09d9471155357da8443fd5d3cf7363811
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
+  url_launcher_macos:
+    dependency: transitive
+    description:
+      name: url_launcher_macos
+      sha256: b7244901ea3cf489c5335bdacda07264a6e960b1c1b1a9f91e4bc371d9e68234
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
+  url_launcher_platform_interface:
+    dependency: transitive
+    description:
+      name: url_launcher_platform_interface
+      sha256: "552f8a1e663569be95a8190206a38187b531910283c3e982193e4f2733f01029"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  url_launcher_web:
+    dependency: transitive
+    description:
+      name: url_launcher_web
+      sha256: "3692a459204a33e04bc94f5fb91158faf4f2c8903281ddd82915adecdb1a901d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
+  url_launcher_windows:
+    dependency: transitive
+    description:
+      name: url_launcher_windows
+      sha256: ecf9725510600aa2bb6d7ddabe16357691b6d2805f66216a97d1b881e21beff7
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
   uuid:
     dependency: transitive
     description:
@@ -997,6 +1270,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  vm_service:
+    dependency: transitive
+    description:
+      name: vm_service
+      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.0.0"
   watcher:
     dependency: transitive
     description:
@@ -1005,6 +1286,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  web:
+    dependency: transitive
+    description:
+      name: web
+      sha256: "97da13628db363c635202ad97068d47c5b8aa555808e7a9411963c533b449b27"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1"
   web_socket_channel:
     dependency: transitive
     description:
@@ -1013,6 +1302,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
+  webview_flutter:
+    dependency: transitive
+    description:
+      name: webview_flutter
+      sha256: "392c1d83b70fe2495de3ea2c84531268d5b8de2de3f01086a53334d8b6030a88"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.4"
+  webview_flutter_android:
+    dependency: transitive
+    description:
+      name: webview_flutter_android
+      sha256: "8b3b2450e98876c70bfcead876d9390573b34b9418c19e28168b74f6cb252dbd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.10.4"
+  webview_flutter_platform_interface:
+    dependency: transitive
+    description:
+      name: webview_flutter_platform_interface
+      sha256: "812165e4e34ca677bdfbfa58c01e33b27fd03ab5fa75b70832d4b7d4ca1fa8cf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.5"
+  webview_flutter_wkwebview:
+    dependency: transitive
+    description:
+      name: webview_flutter_wkwebview
+      sha256: a5364369c758892aa487cbf59ea41d9edd10f9d9baf06a94e80f1bd1b4c7bbc0
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.9.5"
   win32:
     dependency: transitive
     description:
@@ -1046,5 +1367,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.0.0 <4.0.0"
-  flutter: ">=3.10.0"
+  dart: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"

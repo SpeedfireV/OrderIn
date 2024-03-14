@@ -33,6 +33,11 @@ dependencies:
   json_annotation: ^4.8.1
   lottie: ^2.4.0
   numeral: ^2.0.1
+  payu:
+    git: 
+      url: https://github.com/PayU-EMEA/PayU-Flutter.git
+      path: payu
+
 
 dev_dependencies:
   flutter_test:
