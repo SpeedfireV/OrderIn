@@ -51,7 +51,6 @@ class LocationServices {
   static Future AddressByCoordinates(Position position) async {
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    log(placemarks.toString());
     return placemarks[0].street;
   }
 }

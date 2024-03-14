@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meatingless/routing/router.dart';
 import 'package:meatingless/services/database.dart';
@@ -12,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: ".env");
+  Stripe.publishableKey = dotenv.env["STRIPE_API_KEY"]!;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

@@ -66,24 +66,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
       );
     }
 
-    Future _showDeniedLocationDialog() async {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("We Do Not Have Access To Your Location"),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    router.pop();
-                  },
-                  child: Text("Ok"))
-            ],
-          );
-        },
-      );
-    }
-
     Future _locateUser() async {
       Position? location;
 
@@ -100,13 +82,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
             location = await LocationServices.getCurrentPosition();
           } else {
             await _showLocationDialog(function: () async {
-              (await LocationServices.navigateToLocationSettings());
+              await LocationServices.navigateToLocationSettings();
               locationPermission = await LocationServices.checkPermission();
               if (locationPermission == LocationPermission.always ||
                   locationPermission == LocationPermission.whileInUse) {
                 location = await LocationServices.getCurrentPosition();
-              } else {
-                await _showDeniedLocationDialog();
               }
             });
           }
