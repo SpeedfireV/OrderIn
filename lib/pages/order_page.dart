@@ -11,6 +11,7 @@ import 'package:meatingless/variables/colors.dart';
 import 'package:meatingless/variables/padding.dart';
 import 'package:meatingless/widgets/general/icon_buttons.dart';
 import 'package:meatingless/widgets/item_page/item_listtile.dart';
+import 'package:payu/payu.dart';
 
 import '../models/food_item_model.dart';
 import '../services/functions/price.dart';
@@ -207,8 +208,7 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                                               .closed
                                               .then((value) =>
                                                   snackbar.state = false);
-
-                                          router.pop();
+                                          _openAddCardPage(context);
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
@@ -271,4 +271,24 @@ class _OrderPageState extends ConsumerState<OrderPage> {
       ),
     );
   }
+}
+
+void _openAddCardPage(BuildContext context) async {
+  final result = await Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => const PaymentMethodsPage(configuration: PaymentMethodsConfiguration(
+  blikTokens: BlikToken(brandImageUrl: brandImageUrl, type: type, value: value),
+  cardTokens: availablePaymentMethods.cardTokens,
+  payByLinks: availablePaymentMethods.payByLinks,
+);, listener: () {}, storage: storage),
+    ),
+  );
+
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('CardPaymentMethod'),
+      content: Text(result.toString()),
+    ),
+  );
 }

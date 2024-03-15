@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meatingless/routing/router.dart';
+import 'package:meatingless/services/api/payu.dart';
 import 'package:meatingless/services/database.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,12 +15,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: ".env");
-  Stripe.publishableKey = dotenv.env["STRIPE_API_KEY"]!;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  Payu.pos = const POS(id: '385627');
-  Payu.environment = Environment.sandbox;
+  PayUServices.initPayU();
   await initDatabase();
 
   runApp(const ProviderScope(child: MainApp()));
@@ -34,11 +33,9 @@ class MainApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            useMaterial3: true,
-            textTheme: GoogleFonts.nunitoSansTextTheme().apply(),
-            colorScheme: ColorScheme.fromSeed(
-                seedColor: AppColors.secondaryColor,
-                background: AppColors.backgroundColor)),
+          useMaterial3: true,
+          textTheme: GoogleFonts.nunitoSansTextTheme().apply(),
+        ),
         routerConfig: router,
       ),
     );
