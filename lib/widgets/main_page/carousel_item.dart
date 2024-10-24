@@ -101,7 +101,7 @@ class _CarouselItemState extends ConsumerState<CarouselItem> {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    "${rating(item.rating)} (${Numeral(item.numberOfRating).format()})",
+                    "${rating(item.rating)} (${item.numberOfRating})",
                     style: TextStyle(
                         color: AppColors.lightColor,
                         fontWeight: FontWeight.w600,

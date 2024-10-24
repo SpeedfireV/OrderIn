@@ -96,7 +96,7 @@ class _ItemPageState extends ConsumerState<ItemPage> {
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          " (${Numeral(item.numberOfRating).format()} Reviews)",
+                          " (${item.numberOfRating} Reviews)",
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,

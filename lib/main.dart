@@ -9,7 +9,6 @@ import 'package:meatingless/services/database.dart';
 import 'package:meatingless/variables/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:payu/payu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +17,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  PayUServices.initPayU();
   await initDatabase();
 
   runApp(const ProviderScope(child: MainApp()));
@@ -29,6 +27,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Scaffold();
     return SafeArea(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
