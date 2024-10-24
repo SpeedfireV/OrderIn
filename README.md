@@ -13,9 +13,13 @@
 
 ## Screenshots
 
-![Main Screen](path_to_main_screen_screenshot)
-![Search Feature](path_to_search_feature_screenshot)
-![Order History](path_to_order_history_screenshot)
+![App Icon](screenshots/app_icon.png)
+![Main Page](screenshots/main_page.png)
+![Item Page](screenshots/item_page.png)
+![Extra Ingredients](screenshots/extra_ingredients.png)
+![Checkout](screenshots/checkout.png)
+![Order Details](screenshots/order_details.png)
+![Order History](screenshots/order_history.png)
 
 ## Tech Stack
 
