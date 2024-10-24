@@ -14,12 +14,25 @@
 ## Screenshots
 
 <img src="screenshots/app_icon.png" alt="App Icon" width="300"/>
+<p align="center">App Icon</p>
+
 <img src="screenshots/main_page.png" alt="Main Page" width="300"/>
+<p align="center">Main Page</p>
+
 <img src="screenshots/item_page.png" alt="Item Page" width="300"/>
+<p align="center">Item Page</p>
+
 <img src="screenshots/extra_ingredients.png" alt="Extra Ingredients" width="300"/>
+<p align="center">Extra Ingredients</p>
+
 <img src="screenshots/checkout.png" alt="Checkout" width="300"/>
+<p align="center">Checkout</p>
+
 <img src="screenshots/order_details.png" alt="Order Details" width="300"/>
+<p align="center">Order Details</p>
+
 <img src="screenshots/order_history.png" alt="Order History" width="300"/>
+<p align="center">Order History</p>
 
 ## Tech Stack
 
