@@ -13,13 +13,13 @@
 
 ## Screenshots
 
-![App Icon](screenshots/app_icon.png)
-![Main Page](screenshots/main_page.png)
-![Item Page](screenshots/item_page.png)
-![Extra Ingredients](screenshots/extra_ingredients.png)
-![Checkout](screenshots/checkout.png)
-![Order Details](screenshots/order_details.png)
-![Order History](screenshots/order_history.png)
+<img src="screenshots/app_icon.png" alt="App Icon" width="300"/>
+<img src="screenshots/main_page.png" alt="Main Page" width="300"/>
+<img src="screenshots/item_page.png" alt="Item Page" width="300"/>
+<img src="screenshots/extra_ingredients.png" alt="Extra Ingredients" width="300"/>
+<img src="screenshots/checkout.png" alt="Checkout" width="300"/>
+<img src="screenshots/order_details.png" alt="Order Details" width="300"/>
+<img src="screenshots/order_history.png" alt="Order History" width="300"/>
 
 ## Tech Stack
 
